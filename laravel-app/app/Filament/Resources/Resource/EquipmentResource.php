@@ -23,7 +23,7 @@ class EquipmentResource extends Resource
 
     protected static ?string $navigationGroup = 'Resources';
 
-    protected static ?string $navigationIcon = 'heroicon-m-chart-bar';
+    //protected static ?string $navigationIcon = 'heroicon-m-chart-bar';
 
     protected static ?string $navigationLabel = 'Equipment';
 

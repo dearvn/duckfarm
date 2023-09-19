@@ -23,7 +23,7 @@ class AnimalResource extends Resource
 
     protected static ?string $navigationGroup = 'Livestock';
 
-    protected static ?string $navigationIcon = 'heroicon-o-key';
+    ////protected static ?string $navigationIcon = 'heroicon-o-key';
 
     protected static ?string $navigationLabel = 'Animals';
 

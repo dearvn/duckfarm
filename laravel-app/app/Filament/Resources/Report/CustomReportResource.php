@@ -23,7 +23,7 @@ class CustomReportResource extends Resource
 
     protected static ?string $navigationGroup = 'Reports';
 
-    protected static ?string $navigationIcon = 'heroicon-m-chart-bar';
+    //protected static ?string $navigationIcon = 'heroicon-m-chart-bar';
 
     protected static ?string $navigationLabel = 'Custom Reports';
 

@@ -24,12 +24,12 @@ class GaugeResource extends Resource
 
     protected static ?string $navigationGroup = 'Climate';
 
-    protected static ?string $navigationIcon = 'heroicon-o-scale';
+    //protected static ?string $navigationIcon = 'heroicon-o-scale';
 
     protected static ?string $navigationLabel = 'Guages';
 
     protected static ?int $navigationSort = 2;
-    
+
     public static function form(Form $form): Form
     {
         return $form

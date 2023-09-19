@@ -23,7 +23,7 @@ class LocationResource extends Resource
 
     protected static ?string $navigationGroup = 'Plantings';
 
-    protected static ?string $navigationIcon = 'heroicon-m-building-office-2';
+    //protected static ?string $navigationIcon = 'heroicon-m-building-office-2';
 
     protected static ?string $navigationLabel = 'Grow Locations';
 

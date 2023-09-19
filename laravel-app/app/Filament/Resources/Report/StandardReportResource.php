@@ -23,7 +23,7 @@ class StandardReportResource extends Resource
 
     protected static ?string $navigationGroup = 'Reports';
 
-    protected static ?string $navigationIcon = 'heroicon-o-bars-3-bottom-left';
+    //protected static ?string $navigationIcon = 'heroicon-o-bars-3-bottom-left';
 
     protected static ?string $navigationLabel = 'Standard Reports';
 

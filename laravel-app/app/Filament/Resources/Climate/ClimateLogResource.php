@@ -23,7 +23,7 @@ class ClimateLogResource extends Resource
 
     protected static ?string $navigationGroup = 'Climate';
 
-    protected static ?string $navigationIcon = 'heroicon-s-book-open';
+    //protected static ?string $navigationIcon = 'heroicon-s-book-open';
 
     protected static ?string $navigationLabel = 'Climate Logs';
 

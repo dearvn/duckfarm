@@ -23,7 +23,7 @@ class GroupResource extends Resource
 
     protected static ?string $navigationGroup = 'Livestock';
 
-    protected static ?string $navigationIcon = 'heroicon-o-user-group';
+    ////protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
     protected static ?string $navigationLabel = 'Groups';
 

@@ -23,7 +23,7 @@ class TransactionResource extends Resource
 
     protected static ?string $navigationGroup = 'Accounting';
 
-    protected static ?string $navigationIcon = 'heroicon-m-currency-euro';
+    //protected static ?string $navigationIcon = 'heroicon-m-currency-euro';
 
     protected static ?string $navigationLabel = 'Transactions';
 

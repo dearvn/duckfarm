@@ -23,12 +23,12 @@ class PlanResource extends Resource
 
     protected static ?string $navigationGroup = 'Plantings';
 
-    protected static ?string $navigationIcon = 'heroicon-s-gift-top';
+    //protected static ?string $navigationIcon = 'heroicon-s-gift-top';
 
     protected static ?string $navigationLabel = 'Crop Plan';
 
     protected static ?int $navigationSort = 3;
-    
+
     public static function form(Form $form): Form
     {
         return $form

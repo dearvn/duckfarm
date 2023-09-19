@@ -24,7 +24,7 @@ class WeatherHistoryResource extends Resource
 
     protected static ?string $navigationGroup = 'Climate';
 
-    protected static ?string $navigationIcon = 'heroicon-o-lock-closed';
+    //protected static ?string $navigationIcon = 'heroicon-o-lock-closed';
 
     protected static ?string $navigationLabel = 'Weather History';
 

@@ -23,7 +23,7 @@ class CropResource extends Resource
 
     protected static ?string $navigationGroup = 'Plantings';
 
-    protected static ?string $navigationIcon = 'heroicon-m-view-columns';
+    //protected static ?string $navigationIcon = 'heroicon-m-view-columns';
 
     protected static ?string $navigationLabel = 'Crops';
 

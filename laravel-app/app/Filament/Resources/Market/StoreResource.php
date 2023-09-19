@@ -23,7 +23,7 @@ class StoreResource extends Resource
 
     protected static ?string $navigationGroup = 'Market';
 
-    protected static ?string $navigationIcon = 'heroicon-o-shopping-cart';
+    //protected static ?string $navigationIcon = 'heroicon-o-shopping-cart';
 
     protected static ?string $navigationLabel = 'Stores';
 
