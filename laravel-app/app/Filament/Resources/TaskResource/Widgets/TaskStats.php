@@ -1,0 +1,32 @@
+<?php
+
+namespace App\Filament\Resources\TaskResource\Widgets;
+
+use App\Filament\Resources\TaskResource\Pages\ManageTasks;
+use Filament\Widgets\Concerns\InteractsWithPageTable;
+use Filament\Widgets\StatsOverviewWidget\Stat;
+//use Filament\Widgets\Widget;
+use Filament\Widgets\StatsOverviewWidget as BaseWidget;
+
+class TaskStats extends BaseWidget
+{
+    #protected static string $view = 'filament.resources.task-resource.widgets.task-stats';
+
+    use InteractsWithPageTable;
+
+    protected static ?string $pollingInterval = null;
+
+    protected function getTablePage(): string
+    {
+        return ManageTasks::class;
+    }
+
+    protected function getStats(): array
+    {
+        return [
+            Stat::make('Total Tasks', $this->getPageTableQuery()->count()),
+            Stat::make('Total Done Task', $this->getPageTableQuery()->where('status', 'Done')->count()),
+            Stat::make('Total In Progress', $this->getPageTableQuery()->where('status', 'In Progress')->count()),
+        ];
+    }
+}

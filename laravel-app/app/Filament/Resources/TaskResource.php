@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\TaskResource\Pages;
 use App\Filament\Resources\TaskResource\RelationManagers;
+use App\Filament\Resources\TaskResource\Widgets\TaskStats;
 use App\Models\Task;
 use App\Models\User;
 use Filament\Forms;
@@ -15,6 +16,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Notifications\Notification;
+use Illuminate\Database\Eloquent\Model;
 
 class TaskResource extends Resource
 {
@@ -49,10 +51,12 @@ class TaskResource extends Resource
                                     ->maxFiles(5)
                                     ->enableReordering(),
 
-                                Forms\Components\Select::make('associated_to')
+                                /*Forms\Components\Select::make('associated_to')
                                     ->relationship('animal', 'name')
+                                    ->columnSpan('full'),*/
+
+                                Forms\Components\ColorPicker::make('task_color')
                                     ->columnSpan('full')
-                                    ->searchable()
                             ])
                             ->columns(2),
                     ])
@@ -76,6 +80,16 @@ class TaskResource extends Resource
                             ->options(User::all()->pluck('name', 'id'))
                             ->columnSpan('full')
                             ->searchable(),
+
+                        Forms\Components\Select::make('priority')
+                            ->options([
+                                '5' => 'Highest',
+                                '4' => 'High',
+                                '3' => 'Medium',
+                                '2' => 'Low',
+                                '1' => 'Lowest'
+                            ])
+                            ->default('Does not repeat'),
 
                         Forms\Components\DatePicker::make('due_date')
                             ->label('Due Date')
@@ -123,14 +137,54 @@ class TaskResource extends Resource
             ->columns([
                 
                 Tables\Columns\TextColumn::make('name')
+                    ->label(trans('task.resource.task'))
                     ->searchable()
                     ->sortable(),
+                Tables\Columns\TextColumn::make('animal.name')
+                    ->label(trans('task.resource.associated_to'))
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('due_date')
+                    ->label(trans('task.resource.due_date'))
+                    ->dateTime('m/d/Y H:i')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('priority')
+                    ->label(trans('task.resource.priority'))
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('status')
+                    ->label(trans('task.resource.status'))
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('user.name')
+                    ->label(trans('task.resource.assigned_to'))
+                    ->searchable()
+                    ->sortable(),    
                 Tables\Columns\TextColumn::make('updated_at')
                     ->label('Last Updated')
-                    ->date(),
+                    ->dateTime('m/d/Y H:i')
+                    ->date()
+                    ->sortable()
+                    ->toggleable()
+                    ->toggledHiddenByDefault(),
+
+                Tables\Columns\TextColumn::make('created_at')
+                    ->label(trans('task.resource.created_at'))
+                    ->dateTime('m/d/Y H:i')
+                    ->sortable()
+                    ->toggleable()
+                    ->toggledHiddenByDefault(),
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('status')
+                    ->options(['To Do' => 'To Do',
+                    'In Progress' => 'In Progress',
+                    'Done' => 'Done',
+                    'Incomplete' => 'Incomplete',
+                    'Missed' => 'Missed',
+                    'Skipped' => 'Skipped'])
+                    ->multiple()
+                    ->searchable(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -144,7 +198,8 @@ class TaskResource extends Resource
                             ->warning()
                             ->send();
                     }),
-            ]);
+            ])
+            ->defaultSort('created_at', 'desc');
     }
     
     public static function getPages(): array
@@ -153,4 +208,35 @@ class TaskResource extends Resource
             'index' => Pages\ManageTasks::route('/'),
         ];
     }    
+
+    public static function getWidgets(): array
+    {
+        return [
+            TaskStats::class,
+        ];
+    }
+
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['name'];
+    }
+
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        /** @var Task $record */
+
+        return [
+            'Task' => optional($record)->name,
+        ];
+    }
+
+    public static function getGlobalSearchEloquentQuery(): Builder
+    {
+        return parent::getGlobalSearchEloquentQuery()->with(['animal']);
+    }
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::$model::count();
+    }
 }
