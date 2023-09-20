@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\Resource\EquipmentResource\Pages;
+namespace App\Filament\Resources\Tool\EquipmentResource\Pages;
 
-use App\Filament\Resources\Resource\EquipmentResource;
+use App\Filament\Resources\Tool\EquipmentResource;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 

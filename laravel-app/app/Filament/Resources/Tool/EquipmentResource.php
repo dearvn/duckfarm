@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Filament\Resources\Resource;
+namespace App\Filament\Resources\Tool;
 
-use App\Filament\Resources\Resource\WarehouseResource\Pages;
-use App\Filament\Resources\Resource\WarehouseResource\RelationManagers;
-use App\Models\Resource\Warehouse;
+use App\Filament\Resources\Tool\EquipmentResource\Pages;
+use App\Filament\Resources\Tool\EquipmentResource\RelationManagers;
+use App\Models\Tool\Equipment;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,9 +13,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class WarehouseResource extends Resource
+class EquipmentResource extends Resource
 {
-    protected static ?string $model = Warehouse::class;
+    protected static ?string $model = Equipment::class;
 
     protected static ?string $slug = 'resource/equipment';
 
@@ -25,9 +25,9 @@ class WarehouseResource extends Resource
 
     //protected static ?string $navigationIcon = 'heroicon-m-chart-bar';
 
-    protected static ?string $navigationLabel = 'Warehouses';
+    protected static ?string $navigationLabel = 'Equipment';
 
-    protected static ?int $navigationSort = 2;
+    protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
     {
@@ -66,9 +66,9 @@ class WarehouseResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListWarehouses::route('/'),
-            'create' => Pages\CreateWarehouse::route('/create'),
-            'edit' => Pages\EditWarehouse::route('/{record}/edit'),
+            'index' => Pages\ListEquipments::route('/'),
+            'create' => Pages\CreateEquipment::route('/create'),
+            'edit' => Pages\EditEquipment::route('/{record}/edit'),
         ];
     }    
 }

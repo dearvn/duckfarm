@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\Resource\InventoryResource\Pages;
+namespace App\Filament\Resources\Tool\InventoryResource\Pages;
 
-use App\Filament\Resources\Resource\InventoryResource;
+use App\Filament\Resources\Tool\InventoryResource;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\Resource\WarehouseResource\Pages;
+namespace App\Filament\Resources\Tool\WarehouseResource\Pages;
 
-use App\Filament\Resources\Resource\WarehouseResource;
+use App\Filament\Resources\Tool\WarehouseResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 

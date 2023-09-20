@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Filament\Resources\Resource;
+namespace App\Filament\Resources\Tool;
 
-use App\Filament\Resources\Resource\InventoryResource\Pages;
-use App\Filament\Resources\Resource\InventoryResource\RelationManagers;
-use App\Models\Resource\Inventory;
+use App\Filament\Resources\Tool\InventoryResource\Pages;
+use App\Filament\Resources\Tool\InventoryResource\RelationManagers;
+use App\Models\Tool\Inventory;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -17,7 +17,7 @@ class InventoryResource extends Resource
 {
     protected static ?string $model = Inventory::class;
 
-    protected static ?string $slug = 'resource/equipment';
+    protected static ?string $slug = 'resource/inventory';
 
     protected static ?string $recordTitleAttribute = 'name';
 
