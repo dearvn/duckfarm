@@ -34,6 +34,10 @@ class Contact extends Model
         "description",
     ];
 
+    protected $casts = [
+        'keywords' => 'array',
+    ];
+
     public function address(): MorphOne
     {
         return $this->morphOne(ContactAddress::class, 'addressable');

@@ -20,7 +20,7 @@ class Task extends Model implements HasMedia
     /**
      * @var string
      */
-    protected $table = 'farm_tasks';
+    protected $table = 'tasks';
 
     protected $fillable = [
         'name',
@@ -57,4 +57,8 @@ class Task extends Model implements HasMedia
         return $this->belongsTo(Animal::class, 'associated_to');
     }
 
+    public function items(): HasMany
+    {
+        return $this->hasMany(TaskItem::class, 'task_id');
+    }
 }

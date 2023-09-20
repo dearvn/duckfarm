@@ -7,6 +7,8 @@ use App\Filament\Resources\TaskResource\RelationManagers;
 use App\Filament\Resources\TaskResource\Widgets\TaskStats;
 use App\Models\Task;
 use App\Models\User;
+use Filament\Tables\Actions\ActionGroup;
+use Filament\Tables\Actions\Action;
 use Filament\Forms;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Form;
@@ -23,7 +25,7 @@ class TaskResource extends Resource
 {
     protected static ?string $model = Task::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-clock';
+    protected static ?string $navigationIcon = 'heroicon-s-rectangle-stack';
 
     protected static ?string $recordTitleAttribute = 'name';
 
@@ -270,8 +272,17 @@ class TaskResource extends Resource
                     }),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                ActionGroup::make([
+                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\DeleteAction::make(),
+                    Action::make('complete')
+                        ->label('Done')
+                        ->action(fn (Model $record) => self::completeTask($record))
+                        ->icon('heroicon-m-paper-airplane')
+                        ->outlined()
+                        ->color('success')
+                        ->hidden(fn (Model $record): bool => $record->status == 'Done')
+                ])
             ])
             ->groupedBulkActions([
                 Tables\Actions\DeleteBulkAction::make()
@@ -292,7 +303,12 @@ class TaskResource extends Resource
             'create' => Pages\CreateTask::route('/create'),
             'edit' => Pages\EditTask::route('/{record}/edit'),
         ];
-    }    
+    }
+
+    private static function completeTask($model): void
+    {
+        $model->update(['status' => 'Done']);
+    }
 
     public static function getWidgets(): array
     {

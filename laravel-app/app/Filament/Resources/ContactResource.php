@@ -8,10 +8,13 @@ use App\Filament\Resources\ContactResource\Widgets\ContactStats;
 use App\Forms\Components\AddressForm;
 use App\Models\Contact;
 use Filament\Forms;
+use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Table;
+use Illuminate\Container\Container;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Squire\Models\Country;
@@ -24,7 +27,7 @@ class ContactResource extends Resource
 
     protected static ?string $navigationLabel = 'Contact';
 
-    protected static ?string $navigationIcon = 'heroicon-s-chat-bubble-oval-left';
+    protected static ?string $navigationIcon = 'heroicon-s-user-group';
 
     protected static ?int $navigationSort = 10;
     
@@ -77,6 +80,8 @@ class ContactResource extends Resource
                 Forms\Components\TextInput::make('company')
                 ->label(trans('contact.resource.company')),
 
+                TagsInput::make('keywords'),
+
                 AddressForm::make('address')
                 ->columnSpan('full'),
 
@@ -88,8 +93,13 @@ class ContactResource extends Resource
 
     public static function table(Table $table): Table
     {
+        
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('id')
+                    ->label(trans('contact.resource.id'))
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('first_name')
                     ->label(trans('contact.resource.first_name'))
                     ->searchable()
@@ -134,14 +144,18 @@ class ContactResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
+                
             ]);
     }
-    
+    public static function testAction($item) {
+        echo "aaaa";
+    }
     public static function getRelations(): array
     {
         return [
