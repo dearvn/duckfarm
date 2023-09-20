@@ -35,7 +35,26 @@ class AnimalResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Section::make('Basic Information')
+                ->schema([
+                    Forms\Components\TextInput::make('name')
+                        ->label(trans('animal.resource.name'))
+                        ->required()
+                        ->live(onBlur: true),
+                    Forms\Components\Select::make('type')
+                        ->relationship('animal_type', 'name')
+                        ->searchable(),
+                    Forms\Components\TextInput::make('breed')
+                        ->label(trans('animal.resource.breed')),
+
+
+                    Forms\Components\MarkdownEditor::make('description')
+                        ->label(trans('animal.resource.description'))
+                        ->columnSpan('full'),
+
+                    
+                ])
+                ->columnSpan('full'),
             ]);
     }
 
@@ -43,7 +62,7 @@ class AnimalResource extends Resource
     {
         return $table
             ->columns([
-                //
+                
             ])
             ->filters([
                 //
@@ -73,4 +92,9 @@ class AnimalResource extends Resource
             'edit' => Pages\EditAnimal::route('/{record}/edit'),
         ];
     }    
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::$model::count();
+    }
 }

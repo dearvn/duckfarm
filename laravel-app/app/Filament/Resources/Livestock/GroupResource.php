@@ -17,7 +17,7 @@ class GroupResource extends Resource
 {
     protected static ?string $model = Group::class;
 
-    protected static ?string $slug = 'livestock/animals';
+    protected static ?string $slug = 'livestock/groups';
 
     protected static ?string $recordTitleAttribute = 'name';
 
@@ -27,7 +27,7 @@ class GroupResource extends Resource
 
     protected static ?string $navigationLabel = 'Livestock Groups';
 
-    protected static ?int $navigationSort = 2;
+    protected static ?int $navigationSort = 3;
 
     public static function form(Form $form): Form
     {

@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\Livestock\AnimalResource\Pages;
+namespace App\Filament\Resources\Livestock\AnimalTypeResource\Pages;
 
-use App\Filament\Resources\Livestock\AnimalResource;
+use App\Filament\Resources\Livestock\AnimalTypeResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditAnimal extends EditRecord
+class EditAnimalType extends EditRecord
 {
-    protected static string $resource = AnimalResource::class;
+    protected static string $resource = AnimalTypeResource::class;
 
     protected function getHeaderActions(): array
     {
@@ -16,6 +16,7 @@ class EditAnimal extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
+
     protected function getRedirectUrl(): string
     {
         return $this->getResource()::getUrl('index');
