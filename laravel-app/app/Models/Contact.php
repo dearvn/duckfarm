@@ -32,6 +32,8 @@ class Contact extends Model
         "state",
         "postal_code",
         "description",
+        'created_by',
+        'updated_by'
     ];
 
     protected $casts = [

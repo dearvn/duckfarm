@@ -25,7 +25,7 @@ class GroupResource extends Resource
 
     ////protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
-    protected static ?string $navigationLabel = 'Groups';
+    protected static ?string $navigationLabel = 'Livestock Groups';
 
     protected static ?int $navigationSort = 2;
 
@@ -33,7 +33,25 @@ class GroupResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('name')
+                    ->label(trans('group.resource.name'))
+                    ->required()
+                    //->maxValue(50)
+                    ->live(onBlur: true),
+                Forms\Components\MarkdownEditor::make('description')
+                    ->label(trans('group.resource.description'))
+                    ->columnSpan('full'),
+                Forms\Components\Checkbox::make('active_only')
+                    ->label(trans('group.resource.active_only'))
+                    ->columnSpan('full'),
+                Forms\Components\Radio::make('type')
+                    ->hiddenLabel()
+                    ->options([
+                        'Smart' => 'Smart Group - Automaticlly assign animals',
+                        'Basic' => 'Basic Group - Manually assign animals',
+                        'Set' => 'Set - Track records for multiple animals, like a flock together'
+                    ])
+                    ->columnSpan('full'),
             ]);
     }
 
@@ -41,10 +59,29 @@ class GroupResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('id')
+                    ->label(trans('contact.resource.id'))
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('name')
+                    ->label(trans('group.resource.name'))
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('type')
+                    ->label(trans('group.resource.type'))
+                    ->searchable()
+                    ->sortable(),
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('type')
+                    ->options([
+                        'Smart' => 'Smart Group - Automaticlly assign animals',
+                        'Basic' => 'Basic Group - Manually assign animals',
+                        'Set' => 'Set - Track records for multiple animals, like a flock together'
+                    ])
+                    ->multiple()
+                    ->searchable(),
+
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

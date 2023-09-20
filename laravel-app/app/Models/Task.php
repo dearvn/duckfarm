@@ -36,7 +36,9 @@ class Task extends Model implements HasMedia
         'due_date',
         'status',
         'repeats',
-        'hours_spent'
+        'hours_spent',
+        'created_by',
+        'updated_by'
     ];
 
     /**
