@@ -20,11 +20,14 @@ class ContactResource extends Resource
 {
     protected static ?string $model = Contact::class;
 
-    protected static ?string $recordTitleAttribute = 'name';
+    protected static ?string $recordTitleAttribute = 'last_name';
+
+    protected static ?string $navigationLabel = 'Contact';
 
     protected static ?string $navigationIcon = 'heroicon-s-chat-bubble-oval-left';
 
     protected static ?int $navigationSort = 10;
+    
     public static function form(Form $form): Form
     {
         return $form
@@ -77,7 +80,8 @@ class ContactResource extends Resource
                 AddressForm::make('address')
                 ->columnSpan('full'),
 
-                Forms\Components\MarkdownEditor::make('notes')
+                Forms\Components\MarkdownEditor::make('description')
+                ->label(trans('contact.resource.description'))
                 ->columnSpan('full'),
             ]);
     }

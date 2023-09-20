@@ -42,6 +42,7 @@ class AddressForm extends Forms\Components\Field
             Forms\Components\Grid::make()
                 ->schema([
                     Forms\Components\Select::make('country')
+                        ->label(trans('address.resource.country'))
                         ->searchable()
                         ->getSearchResultsUsing(fn (string $query) => Country::where('name', 'like', "%{$query}%")->pluck('name', 'id'))
                         ->getOptionLabelUsing(fn ($value): ?string => Country::find($value)?->getAttribute('name')),
@@ -50,11 +51,12 @@ class AddressForm extends Forms\Components\Field
                 ->label('Street address'),
             Forms\Components\Grid::make(3)
                 ->schema([
-                    Forms\Components\TextInput::make('city'),
+                    Forms\Components\TextInput::make('city')
+                    ->label(trans('address.resource.city')),
                     Forms\Components\TextInput::make('state')
-                        ->label('State / Province'),
+                    ->label(trans('address.resource.state')),
                     Forms\Components\TextInput::make('zip')
-                        ->label('Zip / Postal code'),
+                    ->label(trans('address.resource.zip')),
                 ]),
         ];
     }
