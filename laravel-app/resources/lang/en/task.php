@@ -14,6 +14,7 @@ return [
         'assigned_to' => 'Assignee',
         'attachments' => 'Attachments',
         'description' => 'Description',
-        'task_color' => 'Task Color'
+        'task_color' => 'Task Color',
+        'item_name' => 'Item'
     ]
 ];

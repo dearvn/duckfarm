@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class TaskResource extends Resource
 {
@@ -46,6 +47,46 @@ class TaskResource extends Resource
 
                                 Forms\Components\MarkdownEditor::make('description')
                                     ->label(trans('task.resource.description'))
+                                    ->columnSpan('full'),
+
+                                Forms\Components\Repeater::make('items')
+                                    ->relationship()
+                                    ->schema([
+                                        Forms\Components\Checkbox::make('is_enable')
+                                            ->hiddenLabel()
+                                            ->columnSpan([
+                                                'md' => 2,
+                                            ])
+                                            ->required(),
+                
+                                        Forms\Components\TextInput::make('name')
+                                            ->placeholder(trans('task.resource.item_name'))
+                                            ->hiddenLabel()
+                                            //->disabled()
+                                            ->dehydrated()
+                                            //->numeric()
+                                            ->required()
+                                            ->columnSpan([
+                                                'md' => 3,
+                                            ]),
+
+                                        Forms\Components\Select::make('assigned_to')
+                                            ->placeholder(trans('task.resource.assigned_to'))
+                                            ->hiddenLabel()
+                                            ->options(User::query()->pluck('name', 'id'))
+                                            ->required()
+                                            ->reactive()
+                                            ->columnSpan([
+                                                'md' => 5,
+                                            ])
+                                            ->searchable(),
+                                    ])
+                                    //->orderable()
+                                    ->defaultItems(1)
+                                    //->disableLabel()
+                                    ->columns([
+                                        'md' => 12,
+                                    ])
                                     ->columnSpan('full'),
 
                                 SpatieMediaLibraryFileUpload::make('attachments')
@@ -115,8 +156,7 @@ class TaskResource extends Resource
                             ->label('Hours Spent')
                             ->numeric()
                             ->step(0.1)
-                            ->rules(['regex:/^\d{1,6}(\.\d{0,2})?$/'])
-                            ->required(),
+                            ->rules(['regex:/^\d{1,6}(\.\d{0,2})?$/']),
 
                         /*Forms\Components\Section::make('Associations')
                             ->schema([
@@ -160,8 +200,13 @@ class TaskResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('status')
                     ->label(trans('task.resource.status'))
-                    ->searchable()
-                    ->sortable(),
+                    ->colors([
+                        'info' => 'To Do',
+                        'success' => 'Done',
+                        'warning' => 'In Progress',
+                        'danger' => fn ($state) => in_array($state, ['Incomplete', 'Missed', 'Skipped']),
+                    ]),
+                
                 Tables\Columns\TextColumn::make('user.name')
                     ->label(trans('task.resource.assigned_to'))
                     ->searchable()
@@ -191,6 +236,38 @@ class TaskResource extends Resource
                     'Skipped' => 'Skipped'])
                     ->multiple()
                     ->searchable(),
+
+                Tables\Filters\Filter::make('created_at')
+                    ->form([
+                        Forms\Components\DatePicker::make('created_from')
+                            ->format('m/d/Y')
+                            ->placeholder(fn ($state): string => date('d/m/Y')),
+                        Forms\Components\DatePicker::make('created_until')
+                            ->format('m/d/Y')
+                            ->placeholder(fn ($state): string => now()->format('m/d/Y')),
+                    ])
+                    ->query(function (Builder $query, array $data): Builder {
+                        return $query
+                            ->when(
+                                $data['created_from'] ?? null,
+                                fn (Builder $query, $date): Builder => $query->whereDate('created_at', '>=', $date),
+                            )
+                            ->when(
+                                $data['created_until'] ?? null,
+                                fn (Builder $query, $date): Builder => $query->whereDate('created_at', '<=', $date),
+                            );
+                    })
+                    ->indicateUsing(function (array $data): array {
+                        $indicators = [];
+                        if ($data['created_from'] ?? null) {
+                            $indicators['created_from'] = 'Task from ' . Carbon::parse($data['created_from'])->toFormattedDateString();
+                        }
+                        if ($data['created_until'] ?? null) {
+                            $indicators['created_until'] = 'Task until ' . Carbon::parse($data['created_until'])->toFormattedDateString();
+                        }
+
+                        return $indicators;
+                    }),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

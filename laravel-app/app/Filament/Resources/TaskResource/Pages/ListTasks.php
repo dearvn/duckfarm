@@ -23,4 +23,17 @@ class ListTasks extends ListRecords
     {
         return TaskResource::getWidgets();
     }
+
+    public function getTabs(): array
+    {
+        return [
+            null => ListRecords\Tab::make('All'),
+            'To Do' => ListRecords\Tab::make()->query(fn ($query) => $query->where('status', 'To Do')),
+            'In Progress' => ListRecords\Tab::make()->query(fn ($query) => $query->where('status', 'In Progress')),
+            'Done' => ListRecords\Tab::make()->query(fn ($query) => $query->where('status', 'Done')),
+            'Incomplete' => ListRecords\Tab::make()->query(fn ($query) => $query->where('status', 'Incomplete')),
+            'Missed' => ListRecords\Tab::make()->query(fn ($query) => $query->where('status', 'Missed')),
+            'Skipped' => ListRecords\Tab::make()->query(fn ($query) => $query->where('status', 'Skipped')),
+        ];
+    }
 }
