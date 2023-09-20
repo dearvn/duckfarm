@@ -37,14 +37,17 @@ class TaskResource extends Resource
                         Forms\Components\Section::make()
                             ->schema([
                                 Forms\Components\TextInput::make('name')
+                                    ->label(trans('task.resource.name'))
                                     ->required()
                                     ->columnSpan('full')
                                     ->live(onBlur: true),
 
                                 Forms\Components\MarkdownEditor::make('description')
+                                    ->label(trans('task.resource.description'))
                                     ->columnSpan('full'),
 
                                 SpatieMediaLibraryFileUpload::make('attachments')
+                                    ->label(trans('task.resource.attachments'))
                                     ->collection('task-documents')
                                     ->multiple()
                                     ->columnSpan('full')
@@ -56,6 +59,7 @@ class TaskResource extends Resource
                                     ->columnSpan('full'),*/
 
                                 Forms\Components\ColorPicker::make('task_color')
+                                    ->label(trans('task.resource.task_color'))
                                     ->columnSpan('full')
                             ])
                             ->columns(2),
@@ -146,7 +150,7 @@ class TaskResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('due_date')
                     ->label(trans('task.resource.due_date'))
-                    ->dateTime('m/d/Y H:i')
+                    ->dateTime('m/d/Y')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('priority')
                     ->label(trans('task.resource.priority'))
@@ -205,7 +209,9 @@ class TaskResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageTasks::route('/'),
+            'index' => Pages\ListTasks::route('/'),
+            'create' => Pages\CreateTask::route('/create'),
+            'edit' => Pages\EditTask::route('/{record}/edit'),
         ];
     }    
 

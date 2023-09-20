@@ -2,10 +2,9 @@
 
 namespace App\Filament\Resources\TaskResource\Widgets;
 
-use App\Filament\Resources\TaskResource\Pages\ManageTasks;
+use App\Filament\Resources\TaskResource\Pages\ListTasks;
 use Filament\Widgets\Concerns\InteractsWithPageTable;
 use Filament\Widgets\StatsOverviewWidget\Stat;
-//use Filament\Widgets\Widget;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 
 class TaskStats extends BaseWidget
@@ -18,7 +17,7 @@ class TaskStats extends BaseWidget
 
     protected function getTablePage(): string
     {
-        return ManageTasks::class;
+        return ListTasks::class;
     }
 
     protected function getStats(): array

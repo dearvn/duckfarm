@@ -11,6 +11,9 @@ return [
         'due_date' => 'Due',
         'priority' => 'Priority',
         'status' => 'Status',
-        'assigned_to' => 'Assignee'
+        'assigned_to' => 'Assignee',
+        'attachments' => 'Attachments',
+        'description' => 'Description',
+        'task_color' => 'Task Color'
     ]
 ];

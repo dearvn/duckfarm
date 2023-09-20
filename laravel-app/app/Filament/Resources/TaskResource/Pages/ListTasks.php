@@ -1,18 +1,16 @@
 <?php
 
-namespace App\Filament\Resources\ContactResource\Pages;
+namespace App\Filament\Resources\TaskResource\Pages;
 
-use App\Filament\Resources\ContactResource;
+use App\Filament\Resources\TaskResource;
 use Filament\Actions;
 use Filament\Pages\Concerns\ExposesTableToWidgets;
 use Filament\Resources\Pages\ListRecords;
 
-class ListContacts extends ListRecords
+class ListTasks extends ListRecords
 {
     use ExposesTableToWidgets;
-
-    protected static string $resource = ContactResource::class;
-
+    protected static string $resource = TaskResource::class;
 
     protected function getHeaderActions(): array
     {
@@ -23,6 +21,6 @@ class ListContacts extends ListRecords
 
     protected function getHeaderWidgets(): array
     {
-        return ContactResource::getWidgets();
+        return TaskResource::getWidgets();
     }
 }
