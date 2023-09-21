@@ -13,7 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('tool_inventories', function (Blueprint $table) {
-            $table->foreignIdFor(Warehouse::class);
+            $table->foreignIdFor(Warehouse::class)->nullable();
         });
     }
 
