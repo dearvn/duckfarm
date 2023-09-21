@@ -47,7 +47,7 @@ class TaskResource extends Resource
                                     ->columnSpan('full')
                                     ->live(onBlur: true),
 
-                                Forms\Components\MarkdownEditor::make('description')
+                                Forms\Components\Textarea::make('description')
                                     ->label(trans('task.resource.description'))
                                     ->columnSpan('full'),
 
@@ -97,7 +97,7 @@ class TaskResource extends Resource
                                     ->multiple()
                                     ->columnSpan('full')
                                     ->maxFiles(5)
-                                    ->enableReordering(),
+                                    ->reorderable(),
 
                                 /*Forms\Components\Select::make('associated_to')
                                     ->relationship('animal', 'name')

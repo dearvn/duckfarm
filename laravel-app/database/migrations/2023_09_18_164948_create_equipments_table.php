@@ -30,6 +30,9 @@ return new class extends Migration
             $table->decimal("amount", 8, 2)->nullable();
             $table->string("insured")->nullable();
             $table->text("description")->nullable();
+            $table->foreignId('created_by')->nullable()->constrained('users')->cascadeOnDelete();
+            $table->foreignId('updated_by')->nullable()->constrained('users')->nullOnDelete();
+        
             $table->timestamps();
         });
     }

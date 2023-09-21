@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\Tool\EquipmentResource\Pages;
+namespace App\Filament\Resources\Plant\CropTypeResource\Pages;
 
-use App\Filament\Resources\Tool\EquipmentResource;
+use App\Filament\Resources\Plant\CropTypeResource;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 
-class CreateEquipment extends CreateRecord
+class CreateCropType extends CreateRecord
 {
-    protected static string $resource = EquipmentResource::class;
+    protected static string $resource = CropTypeResource::class;
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {

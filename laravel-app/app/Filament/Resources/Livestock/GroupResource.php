@@ -38,7 +38,7 @@ class GroupResource extends Resource
                     ->required()
                     //->maxValue(50)
                     ->live(onBlur: true),
-                Forms\Components\MarkdownEditor::make('description')
+                Forms\Components\Textarea::make('description')
                     ->label(trans('group.resource.description'))
                     ->columnSpan('full'),
                 Forms\Components\Checkbox::make('active_only')

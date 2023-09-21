@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Filament\Resources\Livestock;
+namespace App\Filament\Resources\Plant;
 
-use App\Filament\Resources\Livestock\AnimalTypeResource\Pages;
-use App\Filament\Resources\Livestock\AnimalTypeResource\RelationManagers;
-use App\Models\Livestock\AnimalType;
+use App\Filament\Resources\Plant\CropTypeResource\Pages;
+use App\Filament\Resources\Plant\CropTypeResource\RelationManagers;
+use App\Models\Plant\CropType;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,17 +13,17 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class AnimalTypeResource extends Resource
+class CropTypeResource extends Resource
 {
-    protected static ?string $model = AnimalType::class;
+    protected static ?string $model = CropType::class;
 
     protected static ?string $recordTitleAttribute = 'name';
 
-    protected static ?string $navigationGroup = 'Livestock';
+    protected static ?string $navigationGroup = 'Plantings';
 
     ////protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
-    protected static ?string $navigationLabel = 'Animal Types';
+    protected static ?string $navigationLabel = 'Crop Types';
 
     protected static ?int $navigationSort = 2;
 
@@ -32,12 +32,12 @@ class AnimalTypeResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
-                    ->label(trans('animal-type.resource.name'))
+                    ->label(trans('crop-type.resource.name'))
                     ->required()
                     ->maxValue(50)
                     ->live(onBlur: true),
                 Forms\Components\Textarea::make('description')
-                    ->label(trans('animal-type.resource.description'))
+                    ->label(trans('crop-type.resource.description'))
                     ->columnSpan('full'),
             ]);
     }
@@ -47,11 +47,11 @@ class AnimalTypeResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('id')
-                    ->label(trans('animal-type.resource.id'))
+                    ->label(trans('crop-type.resource.id'))
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('name')
-                    ->label(trans('animal-type.resource.name'))
+                    ->label(trans('crop-type.resource.name'))
                     ->searchable()
                     ->sortable()
             ])
@@ -77,9 +77,9 @@ class AnimalTypeResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListAnimalTypes::route('/'),
-            'create' => Pages\CreateAnimalType::route('/create'),
-            'edit' => Pages\EditAnimalType::route('/{record}/edit'),
+            'index' => Pages\ListCropTypes::route('/'),
+            'create' => Pages\CreateCropType::route('/create'),
+            'edit' => Pages\EditCropType::route('/{record}/edit'),
         ];
     }    
 }

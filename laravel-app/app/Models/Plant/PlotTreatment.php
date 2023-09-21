@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models\Tool;
+namespace App\Models\Plant;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Inventory extends Model
+class PlotTreatment extends Model
 {
     use HasFactory;
 
@@ -14,18 +14,15 @@ class Inventory extends Model
     /**
      * @var string
      */
-    protected $table = 'tool_inventories';
+    protected $table = 'crop_types';
 
     protected $fillable = [
-        "name",
         "type",
-        "internal_id",
-        "unit",
-        "unit_value",
-        "unit_weight",
-        "track_lots",
-        "alert_amount",
-        "alert_email",
+        "product",
+        "batch",
+        "amount",
+        
+        "name",
         "description",
         'created_by',
         'updated_by'

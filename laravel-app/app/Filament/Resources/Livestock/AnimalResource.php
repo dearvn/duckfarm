@@ -48,7 +48,7 @@ class AnimalResource extends Resource
                         ->label(trans('animal.resource.breed')),
 
 
-                    Forms\Components\MarkdownEditor::make('description')
+                    Forms\Components\Textarea::make('description')
                         ->label(trans('animal.resource.description'))
                         ->columnSpan('full'),
 

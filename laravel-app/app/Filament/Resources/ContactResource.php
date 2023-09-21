@@ -85,7 +85,7 @@ class ContactResource extends Resource
                 AddressForm::make('address')
                 ->columnSpan('full'),
 
-                Forms\Components\MarkdownEditor::make('description')
+                Forms\Components\Textarea::make('description')
                 ->label(trans('contact.resource.description'))
                 ->columnSpan('full'),
             ]);
