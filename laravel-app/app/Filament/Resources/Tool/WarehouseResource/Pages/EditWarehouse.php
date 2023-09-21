@@ -4,7 +4,10 @@ namespace App\Filament\Resources\Tool\WarehouseResource\Pages;
 
 use App\Filament\Resources\Tool\WarehouseResource;
 use Filament\Actions;
+use Filament\Actions\Action;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Pages\EditRecord;
+use Illuminate\Database\Eloquent\Model;
 
 class EditWarehouse extends EditRecord
 {
@@ -14,6 +17,7 @@ class EditWarehouse extends EditRecord
     {
         return [
             Actions\DeleteAction::make(),
+            
         ];
     }
 

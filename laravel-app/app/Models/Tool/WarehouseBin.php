@@ -4,9 +4,10 @@ namespace App\Models\Tool;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Warehouse extends Model
+class WarehouseBin extends Model
 {
     use HasFactory;
 
@@ -15,21 +16,24 @@ class Warehouse extends Model
     /**
      * @var string
      */
-    protected $table = 'tool_warehouses';
+    protected $table = 'warehouse_bins';
 
     protected $fillable = [
         "name",
         "internal_id",
         "description",
+        "capacity",
+        "unit",
+        "warehouse_id",
         'created_by',
         'updated_by'
     ];
 
-    public function bins(): HasMany
+    public function warehouse(): BelongsTo
     {
-        return $this->hasMany(WarehouseBin::class);
+        return $this->belongsTo(Warehouse::class);
     }
-    
+
     public function inventory_logs(): HasMany
     {
         return $this->hasMany(InventoryLog::class);

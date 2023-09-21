@@ -5,9 +5,8 @@ namespace App\Models\Tool;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Inventory extends Model
+class InventoryLog extends Model
 {
     use HasFactory;
 
@@ -16,31 +15,39 @@ class Inventory extends Model
     /**
      * @var string
      */
-    protected $table = 'tool_inventories';
+    protected $table = 'inventory_logs';
 
     protected $fillable = [
-        "name",
-        "type",
-        "internal_id",
-        "unit",
-        "unit_value",
-        "unit_weight",
-        "track_lots",
-        "alert_amount",
-        "alert_email",
-        "description",
+        "amount",
+        "log_date",
+        "source",
+        "reason",
+        "warehouse_bin_id",
+        "inventory_id",
         "warehouse_id",
         'created_by',
         'updated_by'
     ];
 
-    public function inventory_logs(): HasMany
-    {
-        return $this->hasMany(InventoryLog::class);
-    }
+    /**
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'log_date' => 'date',
+    ];
 
     public function warehouse(): BelongsTo
     {
         return $this->belongsTo(Warehouse::class);
+    }
+
+    public function inventory(): BelongsTo
+    {
+        return $this->belongsTo(Inventory::class);
+    }
+
+    public function bin(): BelongsTo
+    {
+        return $this->belongsTo(WarehouseBin::class);
     }
 }

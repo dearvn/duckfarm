@@ -33,7 +33,13 @@ class InventoryResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Section::make()
+                    ->schema(static::getFormSchema()),
+
+                Forms\Components\Section::make(trans('inventory.resource.step2'))
+                    ->schema(static::getFormSchema('warehouse')),
+
+
             ]);
     }
 
@@ -41,7 +47,23 @@ class InventoryResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name')
+                    ->label(trans('inventory.resource.name'))
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('type')
+                    ->label(trans('inventory.resource.type'))
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('unit_value')
+                    ->label(trans('inventory.resource.unit_value'))
+                    ->money()
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('type')
+                    ->label(trans('inventory.resource.type'))
+                    ->searchable()
+                    ->sortable()
             ])
             ->filters([
                 //
@@ -71,4 +93,69 @@ class InventoryResource extends Resource
             'edit' => Pages\EditInventory::route('/{record}/edit'),
         ];
     }    
+
+    public static function getFormSchema(string $section = null): array
+    {
+        if ($section === 'warehouse') {
+            return [
+                Forms\Components\Select::make('warehouse_id')
+                    ->relationship('warehouse', 'name')
+                    ->searchable(),
+            ];
+        }
+
+        return [
+
+            Forms\Components\TextInput::make('name')
+                ->label(trans('inventory.resource.name'))
+                ->required()
+                ->placeholder(trans('inventory.resource.seed'))
+                ->live(onBlur: true),
+            Forms\Components\TextInput::make('type')
+                ->label(trans('inventory.resource.type')),
+            Forms\Components\TextInput::make('internal_id')
+                ->label(trans('inventory.resource.internal_id')),
+
+            Forms\Components\Select::make('unit')
+                ->label(trans('inventory.resource.unit'))
+                ->options([
+                    "bales" => "bales",
+                    "barrels" => "barrels",
+                    "bunches" => "bunches",
+                    "bushels" => "bushels",
+                    "dozen" => "dozen",
+                    "grams" => "grams",
+                    "head" => "head",
+                    "kilograms" => "kilograms",
+                    "kiloliter" => "kiloliter",
+                    "liter" => "liter",
+                    "milliliter" => "milliliter",
+                    "quantity" => "quantity",
+                    "tonnes" => "tonnes"
+                ]),
+            Forms\Components\TextInput::make('unit_value')
+                ->label(trans('inventory.resource.unit_value'))
+                ->numeric()
+                ->minValue(0),
+            Forms\Components\TextInput::make('unit_weight')
+                ->label(trans('inventory.resource.unit_weight'))
+                ->numeric()
+                ->minValue(0),
+
+            Forms\Components\Checkbox::make('track_lots')
+                ->label(trans('inventory.resource.track_lots')),
+
+            Forms\Components\TextInput::make('alert_amount')
+                ->label(trans('inventory.resource.alert_amount'))
+                ->numeric()
+                ->minValue(0),
+
+            Forms\Components\TextInput::make('alert_email')
+                ->label(trans('inventory.resource.alert_email'))
+                ->email(),
+
+            Forms\Components\Textarea::make('description')
+                ->columnSpan('full'),
+        ];
+    }
 }
