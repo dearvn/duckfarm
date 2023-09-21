@@ -5,7 +5,7 @@ return [
         "id" => "ID",
         "created_at" => "Created At",
         "updated_at" => "Updated At",
-        "name" => "Name/Label",
+        "name" => "Name",
         "internal_id" => "Internal ID",
         "description" => "Description",
     ]

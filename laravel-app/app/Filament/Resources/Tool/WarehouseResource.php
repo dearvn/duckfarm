@@ -33,7 +33,17 @@ class WarehouseResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('name')
+                    ->label(trans('warehouse.resource.name'))
+                    ->required()
+                    ->maxValue(50)
+                    ->live(onBlur: true),
+                Forms\Components\TextInput::make('internal_id')
+                    ->label(trans('warehouse.resource.internal_id'))
+                    ->maxValue(50),
+                Forms\Components\Textarea::make('description')
+                    ->label(trans('warehouse.resource.description'))
+                    ->columnSpan('full'),
             ]);
     }
 
@@ -41,10 +51,20 @@ class WarehouseResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('id')
+                    ->label(trans('warehouse.resource.id'))
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('name')
+                    ->label(trans('warehouse.resource.name'))
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('internal_id')
+                    ->label(trans('warehouse.resource.internal_id'))
+                    ->searchable()
+                    ->sortable()
             ])
             ->filters([
-                //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
