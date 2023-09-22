@@ -132,7 +132,7 @@ class InventoryResource extends Resource
                     "milliliter" => "milliliter",
                     "quantity" => "quantity",
                     "tonnes" => "tonnes"
-                ]),
+                ])->default("quantity"),
             Forms\Components\TextInput::make('unit_value')
                 ->label(trans('inventory.resource.unit_value'))
                 ->numeric()

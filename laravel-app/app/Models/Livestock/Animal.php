@@ -2,6 +2,8 @@
 
 namespace App\Models\Livestock;
 
+use App\Models\Contact;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -74,5 +76,29 @@ class Animal extends Model
     {
         return $this->belongsTo(AnimalType::class, 'type');
     }
+
+    public function animal_father(): BelongsTo
+    {
+        return $this->belongsTo(Animal::class, 'father');
+    }
     
+    public function animal_mother(): BelongsTo
+    {
+        return $this->belongsTo(Animal::class, 'mother');
+    }
+
+    public function purchased_from(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'purchased_from_id');
+    }
+    
+    public function breeder(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'breeder_id');
+    }
+
+    public function contact(): BelongsTo
+    {
+        return $this->belongsTo(Contact::class, 'contact_id');
+    }
 }

@@ -19,6 +19,7 @@ class Contact extends Model
     protected $fillable = [
         "first_name",
         "last_name",
+        "full_name",
         "email",
         "contact_type",
         "keywords",

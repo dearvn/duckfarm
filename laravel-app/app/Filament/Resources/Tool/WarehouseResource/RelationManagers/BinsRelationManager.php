@@ -49,7 +49,7 @@ class BinsRelationManager extends RelationManager
                         "milliliter" => "milliliter",
                         "quantity" => "quantity",
                         "tonnes" => "tonnes"
-                    ]),
+                    ])->default("quantity"),
 
                 Forms\Components\Textarea::make('description')
                     ->label(trans('warehouse.resource.description'))
