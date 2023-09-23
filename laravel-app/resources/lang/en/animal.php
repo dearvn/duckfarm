@@ -73,7 +73,23 @@ return [
         "physical" => "Physical Characteristics",
         "identification" => "Identification",
         "birth" => "Birth Information",
-        "additional" => "Additional Information"
+        "additional" => "Additional Information",
         
+        "details" => "Details",
+        "notes" => "Notes",
+        "schedule" => "Schedule",
+        "tasks" => "Tasks",
+        "treatments" => "Treatments",
+        "feedings" => "Feedings",
+        "inputs" => "Inputs",
+        "measurements" => "Measurements",
+        "offspring" => "Offspring",
+        "siblings" => "Siblings",
+        "genealogy" => "Genealogy",
+        "yield" => "Yield",
+        "grazing" => "Grazing",
+        "accounting" => "Accounting",
+        "photos" => "Photos",
+        "files" => "Files",
     ]
 ];
