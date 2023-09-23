@@ -43,4 +43,9 @@ class Inventory extends Model
     {
         return $this->belongsTo(Warehouse::class);
     }
+
+    public function inventory_type(): BelongsTo
+    {
+        return $this->belongsTo(InventoryType::class, 'type');
+    }
 }

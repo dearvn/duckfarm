@@ -51,16 +51,12 @@ class InventoryResource extends Resource
                     ->label(trans('inventory.resource.name'))
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('type')
-                    ->label(trans('inventory.resource.type'))
-                    ->searchable()
-                    ->sortable(),
                 Tables\Columns\TextColumn::make('unit_value')
                     ->label(trans('inventory.resource.unit_value'))
                     ->money()
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('type')
+                Tables\Columns\TextColumn::make('inventory_type.name')
                     ->label(trans('inventory.resource.type'))
                     ->searchable()
                     ->sortable()
@@ -111,8 +107,10 @@ class InventoryResource extends Resource
                 ->required()
                 ->placeholder(trans('inventory.resource.seed'))
                 ->live(onBlur: true),
-            Forms\Components\TextInput::make('type')
-                ->label(trans('inventory.resource.type')),
+            Forms\Components\Select::make('type')
+                ->relationship('inventory_type', 'name')
+                ->label(trans('inventory.resource.type'))
+                ->searchable(),
             Forms\Components\TextInput::make('internal_id')
                 ->label(trans('inventory.resource.internal_id')),
 
