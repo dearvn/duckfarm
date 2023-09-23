@@ -39,31 +39,40 @@ class AnimalResource extends Resource
             ->schema([
                 Forms\Components\Section::make(trans('animal.resource.basic'))
                 ->schema([
-                    Forms\Components\TextInput::make('name')
-                        ->label(trans('animal.resource.name'))
-                        ->required()
-                        ->live(onBlur: true),
-                    Forms\Components\Select::make('type')
-                        ->relationship('animal_type', 'name')
-                        ->searchable(),
-                    Forms\Components\TextInput::make('breed')
-                        ->label(trans('animal.resource.breed'))
-                        ->placeholder(trans('animal.resource.breed')),
+                    Forms\Components\Group::make()->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->label(trans('animal.resource.name'))
+                            ->required()
+                            ->live(onBlur: true),
+                        Forms\Components\Select::make('type')
+                            ->relationship('animal_type', 'name')
+                            ->searchable(),
+                    ])->columns(3),
+                    
+                    Forms\Components\Group::make()->schema([
+                        Forms\Components\TextInput::make('breed')
+                            ->label(trans('animal.resource.breed'))
+                            ->placeholder(trans('animal.resource.breed')),
 
-                    Forms\Components\Select::make('gender')
-                        ->label(trans('animal.resource.gender'))
-                        ->options([
-                            'Male' => 'Male',
-                            'Female' => 'Female'
-                        ]),
-                    TagsInput::make('keywords')
-                        ->label(trans('animal.resource.keywords'))
-                        ->placeholder(trans('animal.resource.calf')),
+                        Forms\Components\Select::make('gender')
+                            ->label(trans('animal.resource.gender'))
+                            ->options([
+                                'Male' => 'Male',
+                                'Female' => 'Female'
+                            ]),
+                    ])->columns(3),
+                    
+                    Forms\Components\Group::make()->schema([
+                        TagsInput::make('keywords')
+                            ->label(trans('animal.resource.keywords'))
+                            ->placeholder(trans('animal.resource.calf')),
 
-                    Forms\Components\TextInput::make('internal_id')
-                        ->label(trans('animal.resource.internal_id'))
-                        ->placeholder(trans('animal.resource.example')),
-
+                        Forms\Components\TextInput::make('internal_id')
+                            ->label(trans('animal.resource.internal_id'))
+                            ->placeholder(trans('animal.resource.example')),
+                    ])->columns(3),
+                    
+                    Forms\Components\Group::make()->schema([
                     Forms\Components\Select::make('status')
                         ->label(trans('animal.resource.status'))
                         ->options([
@@ -84,9 +93,24 @@ class AnimalResource extends Resource
                             'Weaning' => 'Weaning',
                             'Archived' => 'Archived'
                         ])->live(),
+                    ])->columns(3),
                     
-                ])
-                ->columns(3),
+                            
+                    Forms\Components\Group::make()->schema([
+                        Forms\Components\DatePicker::make('death_date')
+                            ->label(fn (Get $get) => trans("animal.resource.date_".strtolower($get('status'))))->columns(1),
+                    ])
+                    ->hidden(fn (Get $get) => !in_array($get('status'), ['Butchered', 'Culled', 'Deceased', 'Sold']))
+                    ->columns(3),
+
+                    Forms\Components\Group::make()->schema([
+                        Forms\Components\Textarea::make('deceased_reason')
+                            ->label(trans("animal.resource.deceased_reason"))->columns(1),
+                    ])
+                    ->hidden(fn (Get $get) => $get('status') !== 'Deceased')
+                    ->columnSpanFull(),
+                    
+                ]),
 
                 Forms\Components\Section::make(trans('animal.resource.physical'))
                 ->schema([
@@ -329,7 +353,7 @@ class AnimalResource extends Resource
                     ->label(trans('animal.resource.status'))
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('type')
+                Tables\Columns\TextColumn::make('animal_type.name')
                     ->label(trans('animal.resource.type'))
                     ->searchable()
                     ->sortable(),
@@ -360,6 +384,7 @@ class AnimalResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
+                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -381,6 +406,7 @@ class AnimalResource extends Resource
             'index' => Pages\ListAnimals::route('/'),
             'create' => Pages\CreateAnimal::route('/create'),
             'edit' => Pages\EditAnimal::route('/{record}/edit'),
+            'view' => Pages\ViewAnimal::route('/{record}'),
         ];
     }    
 

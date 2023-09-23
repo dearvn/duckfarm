@@ -16,11 +16,11 @@ return [
         "example" => "Example: A001",
         "status" => "Status",
         
-        "death_date" => "Date Butchered",
+        "date_butchered" => "Date Butchered",
         "date_culled" => "Date Culled",
         "date_deceased" => "Date Deceased",
         "deceased_reason" => "Deceased Reason",
-        "sale_date" => "Date Sold",
+        "date_sold" => "Date Sold",
 
         "is_neutered" => "Neutered",
         "breeding_stock" => "Is Breeding Stock",
