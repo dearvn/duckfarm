@@ -84,4 +84,9 @@ class InventoryTypeResource extends Resource
             'edit' => Pages\EditInventoryType::route('/{record}/edit'),
         ];
     }    
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::$model::count();
+    }
 }

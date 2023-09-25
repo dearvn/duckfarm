@@ -174,4 +174,9 @@ class InventoryResource extends Resource
                 ->columnSpan('full'),
         ];
     }
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::$model::count();
+    }
 }

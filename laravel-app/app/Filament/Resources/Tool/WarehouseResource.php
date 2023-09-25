@@ -98,4 +98,9 @@ class WarehouseResource extends Resource
             'edit' => Pages\EditWarehouse::route('/{record}/edit'),
         ];
     }    
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::$model::count();
+    }
 }
