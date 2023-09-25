@@ -16,6 +16,7 @@ return [
         "source" => "Source",
         "reason" => "Reason",
         "warehouse" => "Warehouse",
-        "bin" => "Bin"
+        "bin" => "Bin",
+        "create new bin" => "Create new bin"
     ]
 ];

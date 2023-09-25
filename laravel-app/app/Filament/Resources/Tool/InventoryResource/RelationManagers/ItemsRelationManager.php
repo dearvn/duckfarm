@@ -64,6 +64,26 @@ class ItemsRelationManager extends RelationManager
                             ->required()
                             ->reactive()
                             ->preload()
+                            ->createOptionForm([
+                                Forms\Components\TextInput::make('name')
+                                    ->label(trans('warehouse.resource.name'))
+                                    ->required()
+                                    ->maxValue(50)
+                                    ->live(onBlur: true),
+                                Forms\Components\TextInput::make('internal_id')
+                                    ->label(trans('warehouse.resource.internal_id'))
+                                    ->maxValue(50),
+                                Forms\Components\Textarea::make('description')
+                                    ->label(trans('warehouse.resource.description'))
+                                    ->columnSpan('full'),
+                            ])
+                            ->createOptionAction(
+                                function (Forms\Components\Actions\Action $action, Get $get) { 
+                                    return $action
+                                        ->modalWidth('3xl')
+                                        ->modalHeading(trans('warehouse.resource.create new warehouse'));
+
+                            })
                             ->searchable(),
                         ])->columns(2),
 
@@ -77,6 +97,50 @@ class ItemsRelationManager extends RelationManager
                                     ->pluck('name', 'id')
                                     ->toArray();
                             })
+                            /*->relationship('warehouse', 'warehouse_id')
+                            ->createOptionForm([
+                                Forms\Components\TextInput::make('name')
+                                    ->required()
+                                    ->maxLength(255),
+
+                                Forms\Components\TextInput::make('internal_id')
+                                    ->label(trans('warehouse.resource.internal_id'))
+                                    ->maxValue(50),
+
+                                Forms\Components\TextInput::make('capacity')
+                                    ->label(trans('warehouse.resource.capacity'))
+                                    ->numeric()
+                                    ->minValue(0),
+
+                                Forms\Components\Select::make('unit')
+                                    ->label(trans('warehouse.resource.unit'))
+                                    ->options([
+                                        "bales" => trans("common.resource.bales"),
+                                        "barrels" => trans("common.resource.barrels"),
+                                        "bunches" => trans("common.resource.bunches"),
+                                        "bushels" => trans("common.resource.bushels"),
+                                        "dozen" => trans("common.resource.dozen"),
+                                        "grams" => trans("common.resource.grams"),
+                                        "head" => trans("common.resource.head"),
+                                        "kilograms" => trans("common.resource.kilograms"),
+                                        "kiloliter" => trans("common.resource.kiloliter"),
+                                        "liter" => trans("common.resource.liter"),
+                                        "milliliter" => trans("common.resource.milliliter"),
+                                        "quantity" => trans("common.resource.quantity"),
+                                        "tonnes" => trans("common.resource.tonnes")
+                                    ])->default("quantity"),
+
+                                Forms\Components\Textarea::make('description')
+                                    ->label(trans('warehouse.resource.description'))
+                                    ->columnSpan('full'),
+                            ])
+                            ->createOptionAction(
+                                function (Forms\Components\Actions\Action $action, Get $get) { 
+                                    return $action
+                                        ->modalWidth('3xl')
+                                        ->modalHeading(trans('warehouse.resource.create new bin'));
+
+                            })*/
                             ->searchable(),
                         ])->hidden(fn (Get $get) => !$get('warehouse_id'))
                         ->columns(2),

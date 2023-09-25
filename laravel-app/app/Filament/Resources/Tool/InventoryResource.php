@@ -9,6 +9,7 @@ use App\Filament\Resources\Tool\InventoryResource\RelationManagers\LogsRelationM
 use App\Models\Tool\Inventory;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\Summarizers\Sum;
@@ -64,7 +65,7 @@ class InventoryResource extends Resource
                 Tables\Columns\TextColumn::make('inventory_items_sum_amount')
                     ->label(trans('inventory.resource.available'))
                     ->sum('inventory_items', 'amount')
-                    ->state(fn (Model $model) => $model->inventory_items_sum_amount .' '. $model->unit)
+                    ->state(fn (Model $model) => ($model->inventory_items_sum_amount  ? $model->inventory_items_sum_amount : '0') .' '. $model->unit)
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('est_value')
@@ -125,6 +126,23 @@ class InventoryResource extends Resource
                 ->live(onBlur: true),
             Forms\Components\Select::make('type')
                 ->relationship('inventory_type', 'name')
+                ->createOptionForm([
+                    Forms\Components\TextInput::make('name')
+                        ->label(trans('inventory-type.resource.name'))
+                        ->required()
+                        ->maxValue(50)
+                        ->live(onBlur: true),
+                    Forms\Components\Textarea::make('description')
+                        ->label(trans('inventory-type.resource.description'))
+                        ->columnSpan('full'),
+                ])
+                ->createOptionAction(
+                    function (Forms\Components\Actions\Action $action, Get $get) { 
+                        return $action
+                            ->modalWidth('3xl')
+                            ->modalHeading(trans('inventory.resource.create new inventory type'));
+
+                })
                 ->label(trans('inventory.resource.type'))
                 ->searchable(),
             Forms\Components\TextInput::make('internal_id')
@@ -148,7 +166,7 @@ class InventoryResource extends Resource
                     "tonnes" => trans("common.resource.tonnes")
                 ])->default("quantity"),
             Forms\Components\TextInput::make('unit_value')
-                ->label(trans('inventory.resource.unit_value'))
+               ->label(trans('inventory.resource.unit_value'))
                 ->numeric()
                 ->prefix(trans('common.resource.currency_symbol'))
                 ->minValue(0),

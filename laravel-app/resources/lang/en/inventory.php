@@ -22,5 +22,6 @@ return [
         "seed" => "Seed, vaccine, grain, etc",
         "available" => "Available",
         "est_value" => "Est. Value",
+        "create new inventory type" => "Create new Inventory Type"
     ]
 ];
