@@ -13,13 +13,12 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\HtmlString;
 
 class ItemsRelationManager extends RelationManager
 {
     protected static string $relationship = 'inventory_items';
 
-    public string $unit;
-    
     public function form(Form $form): Form
     {
         return $form
@@ -27,13 +26,15 @@ class ItemsRelationManager extends RelationManager
                 Forms\Components\Group::make()->schema([
                     Forms\Components\Group::make()->schema([
                         Forms\Components\Select::make('inventory_id')
+                            ->label(trans('inventory.resource.inventory'))
                             ->relationship('inventory', 'name')
                             ->inlineLabel()
                             ->default($this->getOwnerRecord()->id)
+                            ->helperText(self::total_available($this->getOwnerRecord()->inventory_items)." ". $this->getOwnerRecord()->uint ." ".trans('inventory.resource.available'))
                             ->disabled()
                             ->searchable(),
-                    ])->columns(2),                    
-
+                    ])->columns(2),      
+                    
                     Forms\Components\Group::make()->schema([
                         Forms\Components\TextInput::make('amount')
                             ->label(trans('warehouse.resource.add'))
@@ -79,6 +80,15 @@ class ItemsRelationManager extends RelationManager
                     ])->columns(2),
                 ])->columnSpanFull()
             ]);
+    }
+
+    private static function total_available($items) {
+        $total = 0;
+        foreach($items as $item) {
+            $total += $item->amount;
+        }
+
+        return $total;
     }
 
     public function table(Table $table): Table
