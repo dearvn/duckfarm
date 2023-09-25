@@ -9,4 +9,9 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateWeatherHistory extends CreateRecord
 {
     protected static string $resource = WeatherHistoryResource::class;
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
 }

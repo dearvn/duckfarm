@@ -63,6 +63,7 @@ class ItemsRelationManager extends RelationManager
                             ->inlineLabel()
                             ->required()
                             ->reactive()
+                            ->preload()
                             ->searchable(),
                         ])->columns(2),
 
@@ -117,7 +118,7 @@ class ItemsRelationManager extends RelationManager
                     ->sortable(),
                 Tables\Columns\TextColumn::make('amount')
                     ->label(trans('inventory.resource.available'))
-                    ->state(fn (Model $model) => $model->amount .' '. $this->getOwnerRecord()->unit)
+                    ->state(fn (Model $model) => $model->amount ? ($model->amount .' '. $this->getOwnerRecord()->unit) : '')
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('est_value')
