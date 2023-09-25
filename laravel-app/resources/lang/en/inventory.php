@@ -3,6 +3,7 @@
 return [
     "resource" => [
         "id" => "ID",
+        "inventory" => "Inventory",
         "created_at" => "Created At",
         "updated_at" => "Updated At",
         "name" => "Type Name",
