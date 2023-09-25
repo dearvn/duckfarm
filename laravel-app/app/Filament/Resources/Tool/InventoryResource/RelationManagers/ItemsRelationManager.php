@@ -3,8 +3,10 @@
 namespace App\Filament\Resources\Tool\InventoryResource\RelationManagers;
 
 use App\Models\Tool\Inventory;
+use App\Models\Tool\WarehouseBin;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
@@ -60,16 +62,23 @@ class ItemsRelationManager extends RelationManager
                             ->label(trans('warehouse.resource.warehouse'))
                             ->inlineLabel()
                             ->required()
+                            ->reactive()
                             ->searchable(),
                         ])->columns(2),
+
                     Forms\Components\Group::make()->schema([
                         Forms\Components\Select::make('warehouse_bin_id')
                             ->label(trans('warehouse.resource.bin'))
                             ->inlineLabel()
-                            ->required()
-                            ->relationship('bin', 'name')
+                            ->required(fn (Get $get): bool => filled($get('warehouse_id')))
+                            ->options(function (Get $get): array {
+                                return WarehouseBin::where('warehouse_id', $get('warehouse_id'))
+                                    ->pluck('name', 'id')
+                                    ->toArray();
+                            })
                             ->searchable(),
-                        ])->columns(2),
+                        ])->hidden(fn (Get $get) => !$get('warehouse_id'))
+                        ->columns(2),
                     Forms\Components\Group::make()->schema([
                         Forms\Components\TextInput::make('source')
                         ->inlineLabel()
