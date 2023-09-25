@@ -2,11 +2,11 @@
 
 return [
     "resource" => [
-        "country" => "Country",
-        "address" => "Address",
-        "city" => "City",
-        "state" => "State/Province",
-        "zip" => "Zip / Postal code",
-        "description" => "Description",
+        "country" => "Quốc gia",
+        "address" => "Địa chỉ",
+        "city" => "Thành phố",
+        "state" => "Tỉnh",
+        "zip" => "Mã bưu điện",
+        "description" => "Mô tả",
     ]
 ];

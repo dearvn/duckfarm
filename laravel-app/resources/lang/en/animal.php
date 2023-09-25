@@ -3,9 +3,6 @@
 return [
     "resource" => [
         "animals" => "Animals",
-        "id" => "ID",
-        "created_at" => "Created At",
-        "updated_at" => "Updated At",
         "name" => "Name/Label",
         "type" => "Animal Type",
         "breed" => "Breed",
