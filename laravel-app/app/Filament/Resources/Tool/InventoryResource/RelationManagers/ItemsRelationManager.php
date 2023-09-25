@@ -19,6 +19,8 @@ class ItemsRelationManager extends RelationManager
 {
     protected static string $relationship = 'inventory_items';
 
+    public string $unit;
+    
     public function form(Form $form): Form
     {
         return $form
@@ -30,7 +32,7 @@ class ItemsRelationManager extends RelationManager
                             ->relationship('inventory', 'name')
                             ->inlineLabel()
                             ->default($this->getOwnerRecord()->id)
-                            ->helperText(self::total_available($this->getOwnerRecord()->inventory_items)." ". $this->getOwnerRecord()->uint ." ".trans('inventory.resource.available'))
+                            ->helperText(self::total_available($this->getOwnerRecord()->inventory_items)." ". $this->getOwnerRecord()->unit ." ".trans('inventory.resource.available'))
                             ->disabled()
                             ->searchable(),
                     ])->columns(2),      
