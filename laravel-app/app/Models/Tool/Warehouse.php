@@ -30,8 +30,8 @@ class Warehouse extends Model
         return $this->hasMany(WarehouseBin::class);
     }
     
-    public function inventory_logs(): HasMany
+    public function inventory_items(): HasMany
     {
-        return $this->hasMany(InventoryLog::class);
+        return $this->hasMany(InventoryItem::class);
     }
 }

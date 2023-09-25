@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Animal extends Model
 {
@@ -100,5 +101,10 @@ class Animal extends Model
     public function contact(): BelongsTo
     {
         return $this->belongsTo(Contact::class, 'contact_id');
+    }
+
+    public function animal_notes(): HasMany
+    {
+        return $this->hasMany(AnimalNote::class);
     }
 }

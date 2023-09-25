@@ -34,9 +34,13 @@ class Inventory extends Model
         'updated_by'
     ];
 
-    public function inventory_logs(): HasMany
+    public function total_amount() {
+        return 0;
+    }
+
+    public function inventory_items(): HasMany
     {
-        return $this->hasMany(InventoryLog::class);
+        return $this->hasMany(InventoryItem::class);
     }
 
     public function warehouse(): BelongsTo

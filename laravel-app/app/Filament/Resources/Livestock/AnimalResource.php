@@ -6,6 +6,7 @@ use App\Filament\Resources\Livestock\AnimalResource\Pages;
 use App\Filament\Resources\Livestock\AnimalResource\RelationManagers;
 use App\Models\Livestock\Animal;
 use Filament\Forms;
+use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
@@ -46,7 +47,8 @@ class AnimalResource extends Resource
                         ->schema(self::getViewSchema()),
                     Tabs\Tab::make(trans('animal.resource.notes'))
                     ->schema([
-                        // ...
+                        
+
                     ]),
                     Tabs\Tab::make(trans('animal.resource.schedule'))
                     ->schema([
@@ -424,19 +426,19 @@ class AnimalResource extends Resource
                             ->inlineLabel()
                             ->label(trans('animal.resource.harvest_unit'))
                             ->options([
-                                "bales" => "bales",
-                                "barrels" => "barrels",
-                                "bunches" => "bunches",
-                                "bushels" => "bushels",
-                                "dozen" => "dozen",
-                                "grams" => "grams",
-                                "head" => "head",
-                                "kilograms" => "kilograms",
-                                "kiloliter" => "kiloliter",
-                                "liter" => "liter",
-                                "milliliter" => "milliliter",
-                                "quantity" => "quantity",
-                                "tonnes" => "tonnes"
+                                "bales" => trans("common.resource.bales"),
+                                "barrels" => trans("common.resource.barrels"),
+                                "bunches" => trans("common.resource.bunches"),
+                                "bushels" => trans("common.resource.bushels"),
+                                "dozen" => trans("common.resource.dozen"),
+                                "grams" => trans("common.resource.grams"),
+                                "head" => trans("common.resource.head"),
+                                "kilograms" => trans("common.resource.kilograms"),
+                                "kiloliter" => trans("common.resource.kiloliter"),
+                                "liter" => trans("common.resource.liter"),
+                                "milliliter" => trans("common.resource.milliliter"),
+                                "quantity" => trans("common.resource.quantity"),
+                                "tonnes" => trans("common.resource.tonnes")
                             ])->default("quantity")
                             ->hintIcon('heroicon-m-question-mark-circle', tooltip: trans('animal.resource.unit_hint'))
                     ])
@@ -531,7 +533,7 @@ class AnimalResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //RelationManagers\NotesRelationManager::class,
+            RelationManagers\NotesRelationManager::class,
         ];
     }
     

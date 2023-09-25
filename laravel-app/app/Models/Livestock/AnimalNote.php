@@ -33,11 +33,21 @@ class AnimalNote extends Model
 
     protected $casts = [
         "date" => "date",
-        "attachments" => "array"
+        //"attachments" => "json"
     ];
 
     public function assigned_to(): BelongsTo
     {
         return $this->belongsTo(User::class, "assigned_to_id");
+    }
+
+    public function created_user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, "created_by");
+    }
+
+    public function animal(): BelongsTo
+    {
+        return $this->belongsTo(Animal::class);
     }
 }

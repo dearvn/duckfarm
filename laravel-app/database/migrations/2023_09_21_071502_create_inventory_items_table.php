@@ -14,15 +14,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('inventory_logs', function (Blueprint $table) {
+        Schema::create('inventory_items', function (Blueprint $table) {
             $table->id();
             $table->decimal("amount", 8, 2);
-            $table->date("log_date");
-            $table->string("source");
-            $table->text("reason");
-            $table->foreignIdFor(Warehouse::class);
-            $table->foreignIdFor(WarehouseBin::class);
-            $table->foreignIdFor(Inventory::class);
+            $table->date("log_date")->nullable();
+            $table->string("source")->nullable();
+            $table->text("reason")->nullable();
+            $table->foreignIdFor(Warehouse::class)->nullable()->nullOnDelete();
+            $table->foreignIdFor(WarehouseBin::class)->nullable()->nullOnDelete();
+            $table->foreignIdFor(Inventory::class)->nullable()->nullOnDelete();
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('inventory_logs');
+        Schema::dropIfExists('inventory_items');
     }
 };

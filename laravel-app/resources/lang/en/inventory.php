@@ -18,6 +18,8 @@ return [
         "step1" => "Define Inventory Type", 
         "step2" => "Add Inventory to Warehouses",
         "step3" => "Complete",
-        "seed" => "Seed, vaccine, grain, etc"
+        "seed" => "Seed, vaccine, grain, etc",
+        "available" => "Available",
+        "est_value" => "Est. Value",
     ]
 ];

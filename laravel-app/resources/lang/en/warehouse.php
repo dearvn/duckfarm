@@ -15,5 +15,7 @@ return [
         "log_date" => "Date",
         "source" => "Source",
         "reason" => "Reason",
+        "warehouse" => "Warehouse",
+        "bin" => "Bin"
     ]
 ];

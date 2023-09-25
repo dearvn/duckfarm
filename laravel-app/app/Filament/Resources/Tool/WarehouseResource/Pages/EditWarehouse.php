@@ -32,4 +32,9 @@ class EditWarehouse extends EditRecord
     
         return $data;
     }
+
+    public function hasCombinedRelationManagerTabsWithForm(): bool
+    {
+        return false;
+    }
 }

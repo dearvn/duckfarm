@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class InventoryLog extends Model
+class InventoryItem extends Model
 {
     use HasFactory;
 
@@ -15,7 +15,7 @@ class InventoryLog extends Model
     /**
      * @var string
      */
-    protected $table = 'inventory_logs';
+    protected $table = 'inventory_items';
 
     protected $fillable = [
         "amount",
@@ -48,6 +48,6 @@ class InventoryLog extends Model
 
     public function bin(): BelongsTo
     {
-        return $this->belongsTo(WarehouseBin::class);
+        return $this->belongsTo(WarehouseBin::class, "warehouse_bin_id");
     }
 }

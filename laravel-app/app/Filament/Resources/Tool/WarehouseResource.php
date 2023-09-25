@@ -7,6 +7,7 @@ use App\Filament\Resources\Tool\WarehouseResource\RelationManagers;
 use App\Models\Tool\Warehouse;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Resources\RelationManagers\RelationGroup;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -80,8 +81,12 @@ class WarehouseResource extends Resource
     public static function getRelations(): array
     {
         return [
-            RelationManagers\BinsRelationManager::class,
-            RelationManagers\InventoryLogsRelationManager::class,
+            RelationGroup::make('Bins', [
+                RelationManagers\BinsRelationManager::class,
+            ]),
+            RelationGroup::make('Inventory', [
+                RelationManagers\InventoryItemsRelationManager::class,
+            ])
         ];
     }
     

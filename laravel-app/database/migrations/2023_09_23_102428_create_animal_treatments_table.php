@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Livestock\Animal;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,6 +14,7 @@ return new class extends Migration
     {
         Schema::create('animal_treatments', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(Animal::class);
             $table->string("type")->nullable();
             $table->string("product")->nullable();
             $table->string("batch")->nullable();

@@ -36,19 +36,19 @@ class BinsRelationManager extends RelationManager
                 Forms\Components\Select::make('unit')
                     ->label(trans('warehouse.resource.unit'))
                     ->options([
-                        "bales" => "bales",
-                        "barrels" => "barrels",
-                        "bunches" => "bunches",
-                        "bushels" => "bushels",
-                        "dozen" => "dozen",
-                        "grams" => "grams",
-                        "head" => "head",
-                        "kilograms" => "kilograms",
-                        "kiloliter" => "kiloliter",
-                        "liter" => "liter",
-                        "milliliter" => "milliliter",
-                        "quantity" => "quantity",
-                        "tonnes" => "tonnes"
+                        "bales" => trans("common.resource.bales"),
+                        "barrels" => trans("common.resource.barrels"),
+                        "bunches" => trans("common.resource.bunches"),
+                        "bushels" => trans("common.resource.bushels"),
+                        "dozen" => trans("common.resource.dozen"),
+                        "grams" => trans("common.resource.grams"),
+                        "head" => trans("common.resource.head"),
+                        "kilograms" => trans("common.resource.kilograms"),
+                        "kiloliter" => trans("common.resource.kiloliter"),
+                        "liter" => trans("common.resource.liter"),
+                        "milliliter" => trans("common.resource.milliliter"),
+                        "quantity" => trans("common.resource.quantity"),
+                        "tonnes" => trans("common.resource.tonnes")
                     ])->default("quantity"),
 
                 Forms\Components\Textarea::make('description')

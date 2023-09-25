@@ -194,20 +194,28 @@ class TaskResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('due_date')
                     ->label(trans('task.resource.due_date'))
-                    ->dateTime('m/d/Y')
+                    ->dateTime('d/m/Y')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('priority')
                     ->label(trans('task.resource.priority'))
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('status')
+                Tables\Columns\SelectColumn::make('status')
                     ->label(trans('task.resource.status'))
-                    ->colors([
+                    ->options([
+                        'To Do' => 'To Do',
+                        'In Progress' => 'In Progress',
+                        'Done' => 'Done',
+                        'Incomplete' => 'Incomplete',
+                        'Missed' => 'Missed',
+                        'Skipped' => 'Skipped'
+                    ])
+                    /*->colors([
                         'info' => 'To Do',
                         'success' => 'Done',
                         'warning' => 'In Progress',
                         'danger' => fn ($state) => in_array($state, ['Incomplete', 'Missed', 'Skipped']),
-                    ]),
+                    ])*/,
                 
                 Tables\Columns\TextColumn::make('user.name')
                     ->label(trans('task.resource.assigned_to'))
@@ -215,7 +223,7 @@ class TaskResource extends Resource
                     ->sortable(),    
                 Tables\Columns\TextColumn::make('updated_at')
                     ->label('Last Updated')
-                    ->dateTime('m/d/Y H:i')
+                    ->dateTime('d/m/Y H:i')
                     ->date()
                     ->sortable()
                     ->toggleable()
@@ -223,7 +231,7 @@ class TaskResource extends Resource
 
                 Tables\Columns\TextColumn::make('created_at')
                     ->label(trans('task.resource.created_at'))
-                    ->dateTime('m/d/Y H:i')
+                    ->dateTime('d/m/Y H:i')
                     ->sortable()
                     ->toggleable()
                     ->toggledHiddenByDefault(),
@@ -242,11 +250,11 @@ class TaskResource extends Resource
                 Tables\Filters\Filter::make('created_at')
                     ->form([
                         Forms\Components\DatePicker::make('created_from')
-                            ->format('m/d/Y')
+                            ->format('d/m/Y')
                             ->placeholder(fn ($state): string => date('d/m/Y')),
                         Forms\Components\DatePicker::make('created_until')
-                            ->format('m/d/Y')
-                            ->placeholder(fn ($state): string => now()->format('m/d/Y')),
+                            ->format('d/m/Y')
+                            ->placeholder(fn ($state): string => now()->format('d/m/Y')),
                     ])
                     ->query(function (Builder $query, array $data): Builder {
                         return $query

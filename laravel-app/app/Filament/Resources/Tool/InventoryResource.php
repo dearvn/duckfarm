@@ -4,13 +4,17 @@ namespace App\Filament\Resources\Tool;
 
 use App\Filament\Resources\Tool\InventoryResource\Pages;
 use App\Filament\Resources\Tool\InventoryResource\RelationManagers;
+use App\Filament\Resources\Tool\InventoryResource\RelationManagers\ItemsRelationManager;
+use App\Filament\Resources\Tool\InventoryResource\RelationManagers\LogsRelationManager;
 use App\Models\Tool\Inventory;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\Summarizers\Sum;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class InventoryResource extends Resource
@@ -28,6 +32,8 @@ class InventoryResource extends Resource
     protected static ?string $navigationLabel = 'Inventory';
 
     protected static ?int $navigationSort = 3;
+
+    
 
     public static function form(Form $form): Form
     {
@@ -51,16 +57,24 @@ class InventoryResource extends Resource
                     ->label(trans('inventory.resource.name'))
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('unit_value')
-                    ->label(trans('inventory.resource.unit_value'))
-                    ->money()
-                    ->searchable()
-                    ->sortable(),
                 Tables\Columns\TextColumn::make('inventory_type.name')
                     ->label(trans('inventory.resource.type'))
                     ->searchable()
-                    ->sortable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('inventory_items_sum_amount')
+                    ->label(trans('inventory.resource.available'))
+                    ->sum('inventory_items', 'amount')
+                    ->state(fn (Model $model) => $model->inventory_items_sum_amount .' '. $model->unit)
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('est_value')
+                    ->label(trans('inventory.resource.est_value'))
+                    ->state(fn (Model $model) => $model->inventory_items_sum_amount * $model->unit_value)
+                    ->money()
+                    ->searchable()
+                    ->sortable(),
             ])
+            //->defaultGroup('type')
             ->filters([
                 //
             ])
@@ -77,7 +91,9 @@ class InventoryResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            ItemsRelationManager::make([
+                'title' => ''
+            ]),
         ];
     }
     
@@ -117,27 +133,29 @@ class InventoryResource extends Resource
             Forms\Components\Select::make('unit')
                 ->label(trans('inventory.resource.unit'))
                 ->options([
-                    "bales" => "bales",
-                    "barrels" => "barrels",
-                    "bunches" => "bunches",
-                    "bushels" => "bushels",
-                    "dozen" => "dozen",
-                    "grams" => "grams",
-                    "head" => "head",
-                    "kilograms" => "kilograms",
-                    "kiloliter" => "kiloliter",
-                    "liter" => "liter",
-                    "milliliter" => "milliliter",
-                    "quantity" => "quantity",
-                    "tonnes" => "tonnes"
+                    "bales" => trans("common.resource.bales"),
+                    "barrels" => trans("common.resource.barrels"),
+                    "bunches" => trans("common.resource.bunches"),
+                    "bushels" => trans("common.resource.bushels"),
+                    "dozen" => trans("common.resource.dozen"),
+                    "grams" => trans("common.resource.grams"),
+                    "head" => trans("common.resource.head"),
+                    "kilograms" => trans("common.resource.kilograms"),
+                    "kiloliter" => trans("common.resource.kiloliter"),
+                    "liter" => trans("common.resource.liter"),
+                    "milliliter" => trans("common.resource.milliliter"),
+                    "quantity" => trans("common.resource.quantity"),
+                    "tonnes" => trans("common.resource.tonnes")
                 ])->default("quantity"),
             Forms\Components\TextInput::make('unit_value')
                 ->label(trans('inventory.resource.unit_value'))
                 ->numeric()
+                ->prefix(trans('common.resource.currency_symbol'))
                 ->minValue(0),
             Forms\Components\TextInput::make('unit_weight')
                 ->label(trans('inventory.resource.unit_weight'))
                 ->numeric()
+                ->postfix(trans('common.resource.kg'))
                 ->minValue(0),
 
             Forms\Components\Checkbox::make('track_lots')
