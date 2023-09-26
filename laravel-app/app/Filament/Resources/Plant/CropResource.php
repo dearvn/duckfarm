@@ -39,6 +39,16 @@ class CropResource extends Resource
         return __('common.resource.crops');
     }
 
+    public static function getPluralModelLabel(): string
+    {
+        return __('common.resource.crops');
+    }
+    
+    public static function getModelLabel(): string
+    {
+        return strtolower(__('common.resource.crops'));
+    }
+
     public static function form(Form $form): Form
     {
         return $form

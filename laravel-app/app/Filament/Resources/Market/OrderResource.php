@@ -39,6 +39,16 @@ class OrderResource extends Resource
         return __('common.resource.orders');
     }
 
+    public static function getPluralModelLabel(): string
+    {
+        return __('common.resource.orders');
+    }
+    
+    public static function getModelLabel(): string
+    {
+        return strtolower(__('common.resource.orders'));
+    }
+
     public static function form(Form $form): Form
     {
         return $form

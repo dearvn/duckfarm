@@ -39,6 +39,16 @@ class StandardReportResource extends Resource
         return __('common.resource.standard_reports');
     }
 
+    public static function getPluralModelLabel(): string
+    {
+        return __('common.resource.standard_reports');
+    }
+    
+    public static function getModelLabel(): string
+    {
+        return strtolower(__('common.resource.standard_reports'));
+    }
+
     public static function form(Form $form): Form
     {
         return $form

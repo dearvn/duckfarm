@@ -37,6 +37,16 @@ class AnimalTypeResource extends Resource
         return __('common.resource.animal_types');
     }
 
+    public static function getPluralModelLabel(): string
+    {
+        return __('common.resource.animal_types');
+    }
+    
+    public static function getModelLabel(): string
+    {
+        return strtolower(__('common.resource.animal_types'));
+    }
+
     public static function form(Form $form): Form
     {
         return $form

@@ -48,6 +48,16 @@ class AnimalResource extends Resource
         return __('common.resource.animals');
     }
 
+    public static function getPluralModelLabel(): string
+    {
+        return __('common.resource.animals');
+    }
+    
+    public static function getModelLabel(): string
+    {
+        return strtolower(__('common.resource.animals'));
+    }
+
     public static function infolist(Infolist $infolist): Infolist
     {
         return $infolist->schema([

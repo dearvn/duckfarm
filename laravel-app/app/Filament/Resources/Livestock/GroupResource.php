@@ -39,6 +39,15 @@ class GroupResource extends Resource
         return __('common.resource.livestock_groups');
     }
     
+    public static function getPluralModelLabel(): string
+    {
+        return __('common.resource.livestock_groups');
+    }
+    
+    public static function getModelLabel(): string
+    {
+        return strtolower(__('common.resource.livestock_groups'));
+    }
 
     public static function form(Form $form): Form
     {
