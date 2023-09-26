@@ -115,19 +115,19 @@ class ItemsRelationManager extends RelationManager
                                 Forms\Components\Select::make('unit')
                                     ->label(trans('warehouse.resource.unit'))
                                     ->options([
-                                        "bales" => trans("common.resource.bales"),
-                                        "barrels" => trans("common.resource.barrels"),
-                                        "bunches" => trans("common.resource.bunches"),
-                                        "bushels" => trans("common.resource.bushels"),
-                                        "dozen" => trans("common.resource.dozen"),
-                                        "grams" => trans("common.resource.grams"),
-                                        "head" => trans("common.resource.head"),
-                                        "kilograms" => trans("common.resource.kilograms"),
-                                        "kiloliter" => trans("common.resource.kiloliter"),
-                                        "liter" => trans("common.resource.liter"),
-                                        "milliliter" => trans("common.resource.milliliter"),
-                                        "quantity" => trans("common.resource.quantity"),
-                                        "tonnes" => trans("common.resource.tonnes")
+                                        "bales" => trans("options.bales"),
+                                        "barrels" => trans("options.barrels"),
+                                        "bunches" => trans("options.bunches"),
+                                        "bushels" => trans("options.bushels"),
+                                        "dozen" => trans("options.dozen"),
+                                        "grams" => trans("options.grams"),
+                                        "head" => trans("options.head"),
+                                        "kilograms" => trans("options.kilograms"),
+                                        "kiloliter" => trans("options.kiloliter"),
+                                        "liter" => trans("options.liter"),
+                                        "milliliter" => trans("options.milliliter"),
+                                        "quantity" => trans("options.quantity"),
+                                        "tonnes" => trans("options.tonnes")
                                     ])->default("quantity"),
 
                                 Forms\Components\Textarea::make('description')

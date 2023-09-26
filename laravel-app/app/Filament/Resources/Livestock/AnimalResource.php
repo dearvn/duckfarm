@@ -161,8 +161,8 @@ class AnimalResource extends Resource
                             ->inlineLabel()
                             ->label(trans('animal.resource.gender'))
                             ->options([
-                                'Male' => 'Male',
-                                'Female' => 'Female'
+                                'Male' => trans('options.male'),
+                                'Female' => trans('options.female')
                             ]),
                     ])->columns(2),
                     
@@ -184,22 +184,22 @@ class AnimalResource extends Resource
                             ->inlineLabel()
                             ->label(trans('animal.resource.status'))
                             ->options([
-                                'Active' => 'Active',
-                                'Butchered' => 'Butchered',
-                                'Culled' => 'Culled',
-                                'Deceased' => 'Deceased',
-                                'Dry' => 'Dry',
-                                'Finishing' => 'Finishing',
-                                'For Sale' => 'For Sale',
-                                'Lactating' => 'Lactating',
-                                'Lost' => 'Lost',
-                                'Off Farm' => 'Off Farm',
-                                'Quarantined' => 'Quarantined',
-                                'Reference' => 'Reference',
-                                'Sick' => 'Sick',
-                                'Sold' => 'Sold',
-                                'Weaning' => 'Weaning',
-                                'Archived' => 'Archived'
+                                'Active' => trans('options.active'),
+                                'Butchered' => trans('options.butchered'),
+                                'Culled' => trans('options.culled'),
+                                'Deceased' => trans('options.deceased'),
+                                'Dry' => trans('options.dry'),
+                                'Finishing' => trans('options.finishing'),
+                                'For Sale' => trans('options.for_sale'),
+                                'Lactating' => trans('options.lactating'),
+                                'Lost' => trans('options.lost'),
+                                'Off Farm' => trans('options.off_farm'),
+                                'Quarantined' => trans('options.quarantined'),
+                                'Reference' => trans('options.reference'),
+                                'Sick' => trans('options.sick'),
+                                'Sold' => trans('options.sold'),
+                                'Weaning' => trans('options.weaning'),
+                                'Archived' => trans('options.archived')    
                             ])->reactive(),
                     ])->columns(2),
                     
@@ -268,8 +268,8 @@ class AnimalResource extends Resource
                             ->hiddenLabel()
                             ->placeholder(trans('animal.resource.tag_location'))
                             ->options([
-                                'Left Ear' => 'Left Ear',
-                                'Right Ear' => 'Right Ear'
+                                'Left Ear' => trans('options.left_ear'),
+                                'Right Ear' => trans('options.right_ear')
                             ]),
                     ])->columns(3),
                 
@@ -287,8 +287,8 @@ class AnimalResource extends Resource
                             ->hiddenLabel()
                             ->placeholder(trans('animal.resource.other_tag_location'))
                                 ->options([
-                                    'Left Ear' => 'Left Ear',
-                                    'Right Ear' => 'Right Ear'
+                                    'Left Ear' => trans('options.left_ear'),
+                                    'Right Ear' => trans('options.right_ear')
                                 ]),
                     ])->columns(3),
                 
@@ -371,10 +371,11 @@ class AnimalResource extends Resource
                             ->inlineLabel()
                             ->label(trans('animal.resource.purchased'))
                             ->options([
-                                'Raised' => 'Raised',
-                                'Purchased' => 'Purchased'
+                                'Raised' => trans('options.raised'),
+                                'Purchased' => trans('options.purchased')
                             ])
                             ->default('Raised')
+                            
                             ->reactive()
                             ->columns(1),
                     ])
@@ -446,19 +447,19 @@ class AnimalResource extends Resource
                             ->inlineLabel()
                             ->label(trans('animal.resource.harvest_unit'))
                             ->options([
-                                "bales" => trans("common.resource.bales"),
-                                "barrels" => trans("common.resource.barrels"),
-                                "bunches" => trans("common.resource.bunches"),
-                                "bushels" => trans("common.resource.bushels"),
-                                "dozen" => trans("common.resource.dozen"),
-                                "grams" => trans("common.resource.grams"),
-                                "head" => trans("common.resource.head"),
-                                "kilograms" => trans("common.resource.kilograms"),
-                                "kiloliter" => trans("common.resource.kiloliter"),
-                                "liter" => trans("common.resource.liter"),
-                                "milliliter" => trans("common.resource.milliliter"),
-                                "quantity" => trans("common.resource.quantity"),
-                                "tonnes" => trans("common.resource.tonnes")
+                                "bales" => trans("options.bales"),
+                                "barrels" => trans("options.barrels"),
+                                "bunches" => trans("options.bunches"),
+                                "bushels" => trans("options.bushels"),
+                                "dozen" => trans("options.dozen"),
+                                "grams" => trans("options.grams"),
+                                "head" => trans("options.head"),
+                                "kilograms" => trans("options.kilograms"),
+                                "kiloliter" => trans("options.kiloliter"),
+                                "liter" => trans("options.liter"),
+                                "milliliter" => trans("options.milliliter"),
+                                "quantity" => trans("options.quantity"),
+                                "tonnes" => trans("options.tonnes")
                             ])->default("quantity")
                             ->hintIcon('heroicon-m-question-mark-circle', tooltip: trans('animal.resource.unit_hint'))
                     ])
@@ -518,22 +519,22 @@ class AnimalResource extends Resource
             ->filters([
                 Tables\Filters\SelectFilter::make('status')
                     ->options([
-                        'Active' => 'Active',
-                        'Butchered' => 'Butchered',
-                        'Culled' => 'Culled',
-                        'Deceased' => 'Deceased',
-                        'Dry' => 'Dry',
-                        'Finishing' => 'Finishing',
-                        'For Sale' => 'For Sale',
-                        'Lactating' => 'Lactating',
-                        'Lost' => 'Lost',
-                        'Off Farm' => 'Off Farm',
-                        'Quarantined' => 'Quarantined',
-                        'Reference' => 'Reference',
-                        'Sick' => 'Sick',
-                        'Sold' => 'Sold',
-                        'Weaning' => 'Weaning',
-                        'Archived' => 'Archived'    
+                        'Active' => trans('options.active'),
+                        'Butchered' => trans('options.butchered'),
+                        'Culled' => trans('options.culled'),
+                        'Deceased' => trans('options.deceased'),
+                        'Dry' => trans('options.dry'),
+                        'Finishing' => trans('options.finishing'),
+                        'For Sale' => trans('options.for_sale'),
+                        'Lactating' => trans('options.lactating'),
+                        'Lost' => trans('options.lost'),
+                        'Off Farm' => trans('options.off_farm'),
+                        'Quarantined' => trans('options.quarantined'),
+                        'Reference' => trans('options.reference'),
+                        'Sick' => trans('options.sick'),
+                        'Sold' => trans('options.sold'),
+                        'Weaning' => trans('options.weaning'),
+                        'Archived' => trans('options.archived')    
                     ])
                     ->multiple()
                     ->searchable(),

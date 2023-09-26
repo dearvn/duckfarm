@@ -41,20 +41,6 @@ return [
         'report_param' => 'Thông số báo cáo',
         'upload_param' => 'Thông số upload',
 
-        "bales" => "kiện",
-        "barrels" => "thùng",
-        "bunches" => "chùm",
-        "bushels" => "giạ",
-        "dozen" => "chục",
-        "grams" => "gram",
-        "head" => "đầu",
-        "kilograms" => "kilôgam",
-        "kiloliter" => "kilô lít",
-        "liter" => "lít",
-        "milliliter" => "mili lít",
-        "quantity" => "số lượng",
-        "tonnes" => "tấn",
-
         "currency_symbol" => "₫",
         "kg" => "kg",
     ]
