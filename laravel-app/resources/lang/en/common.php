@@ -42,22 +42,17 @@ return [
         'report_param' => 'Report Params',
         'upload_param' => 'Upload Param',
         
-        "bales" => "bales",
-        "barrels" => "barrels",
-        "bunches" => "bunches",
-        "bushels" => "bushels",
-        "dozen" => "dozen",
-        "grams" => "grams",
-        "head" => "head",
-        "kilograms" => "kilograms",
-        "kiloliter" => "kiloliter",
-        "liter" => "liter",
-        "milliliter" => "milliliter",
-        "quantity" => "quantity",
-        "tonnes" => "tonnes",
+        'treatments' => "Treatments",
+        'feedings' => "Feedings",
+        'inputs' => "Inputs",
+        'measurements' => "Measurement",
+
+        'inventory_items' => 'Inventory Items',
 
         "currency_symbol" => "$",
         "kg" => "kg",
-
+        "keywords" => "Keywords",
+        "description" => "Description",
+        "status" => "Status"
     ]
 ];

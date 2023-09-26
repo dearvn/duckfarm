@@ -41,7 +41,17 @@ return [
         'report_param' => 'Thông số báo cáo',
         'upload_param' => 'Thông số upload',
 
+        'treatments' => "Chữa trị",
+        'feedings' => "Cho ăn",
+        'inputs' => "Đầu vào",
+        'measurements' => "Đo lường",
+
+        'inventory_items' => 'Hàng tồn kho',
+
         "currency_symbol" => "₫",
         "kg" => "kg",
+        "keywords" => "Từ khóa",
+        "description" => "Mô tả",
+        "status" => "Trạng thái"
     ]
 ];

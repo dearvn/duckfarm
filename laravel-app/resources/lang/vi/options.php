@@ -43,6 +43,13 @@ return [
         
     // gender options
     'male' => 'Con đực',
-    'female' => 'Con cái'
+    'female' => 'Con cái',
     
+    // task status options
+    'to_do' => 'Việc cần làm',
+    'in_progress' => 'Đang tiến hành',
+    'done' => 'Xong',
+    'incomplete' => 'Chưa hoàn thành',
+    'missed' => 'Bỏ lỡ',
+    'skipped' => 'Bỏ qua'
 ];

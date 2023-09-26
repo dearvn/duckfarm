@@ -45,5 +45,13 @@ return [
     
     // gender options
     'male' => 'Male',
-    'female' => 'Female'
+    'female' => 'Female',
+
+    // task status options
+    'to_do' => 'To Do',
+    'in_progress' => 'In Progress',
+    'done' => 'Done',
+    'incomplete' => 'Incomplete',
+    'missed' => 'Missed',
+    'skipped' => 'Skipped'
 ];
