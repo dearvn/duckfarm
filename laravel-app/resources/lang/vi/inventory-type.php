@@ -5,7 +5,7 @@ return [
         "id" => "ID",
         "created_at" => "Created At",
         "updated_at" => "Updated At",
-        "name" => "Name",
-        'description' => 'Description',
+        "name" => "Tên nhóm sản phẩm",
+        'description' => 'Mô tả',
     ]
 ];

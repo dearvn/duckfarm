@@ -3,9 +3,9 @@
 return [
     "resource" => [
         "animals" => "Vụ nuôi",
-        "name" => "Tên/Nhãn",
-        "type" => "Loại vụ nuôi",
-        "amount" => "Số lượng",
+        "name" => "Tên vụ nuôi",
+        "type" => "Loại vật nuôi",
+        "amount" => "Số lượng vật nuôi",
         "breed" => "Giống",
         "gender" => "Giới tính",
         "keywords" => "Nhãn/Từ khóa",
@@ -22,7 +22,7 @@ return [
 
         "is_neutered" => "Đã thiến",
         "breeding_stock" => "Là con giống",
-        "coloring" => "Tô màu",
+        "coloring" => "Màu vật nuôi",
         "brown" => "Nâu, trắng, đen, v.v", 
         "retention_score" => "Điểm giữ chân",
         
