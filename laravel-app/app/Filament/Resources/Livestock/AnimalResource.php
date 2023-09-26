@@ -152,8 +152,11 @@ class AnimalResource extends Resource
 
                     Forms\Components\Group::make()->schema([
                         Forms\Components\TextInput::make('amount')
-                        ->label(trans('animal.resource.amount'))
-                        ->numeric()
+                            ->label(trans('animal.resource.amount'))
+                            ->minValue(0)
+                            ->default(0)
+                            ->inlineLabel()
+                            ->numeric()
                     ])->columns(2),
                     Forms\Components\Group::make()->schema([
                         Forms\Components\TextInput::make('breed')
