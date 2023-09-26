@@ -39,9 +39,10 @@ return [
     'sick' => 'Bệnh',
     'sold' => 'Đã bán',
     'weaning' => 'Cai sữa',
-    'archived' => 'Đã lưu trữ'
+    'archived' => 'Đã lưu trữ',
         
-        
-
+    // gender options
+    'male' => 'Con đực',
+    'female' => 'Con cái'
     
 ];

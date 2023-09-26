@@ -41,6 +41,9 @@ return [
     'sick' => 'Sick',
     'sold' => 'Sold',
     'weaning' => 'Weaning',
-    'archived' => 'Archived'
+    'archived' => 'Archived',
     
+    // gender options
+    'male' => 'Male',
+    'female' => 'Female'
 ];
