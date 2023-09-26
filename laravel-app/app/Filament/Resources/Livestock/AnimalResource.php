@@ -63,9 +63,23 @@ class AnimalResource extends Resource
         return $infolist->schema([
             Tabs::make(trans('animal.resource.detail'))
                 ->tabs([
-                    Tabs\Tab::make(trans('animal.resource.details'))
-                        ->schema(self::getViewSchema()),
-                    Tabs\Tab::make(trans('animal.resource.notes'))
+                    Tabs\Tab::make(trans('animal.resource.basic'))
+                        ->schema(self::getViewBasicSchema()),
+
+                    Tabs\Tab::make(trans('animal.resource.physical'))
+                        ->schema(self::getViewPhysicalSchema()),
+
+                    Tabs\Tab::make(trans('animal.resource.identification'))
+                        ->schema(self::getViewIdentificationSchema()),
+
+                    Tabs\Tab::make(trans('animal.resource.birth'))
+                        ->schema(self::getViewBirthSchema()),
+
+                    Tabs\Tab::make(trans('animal.resource.additional'))
+                        ->schema(self::getViewAdditionalSchema()),
+                        
+
+                    /*Tabs\Tab::make(trans('animal.resource.notes'))
                     ->schema([
                         
 
@@ -125,7 +139,7 @@ class AnimalResource extends Resource
                     Tabs\Tab::make(trans('animal.resource.files'))
                     ->schema([
                         // ...
-                    ]),
+                    ]),*/
                 ])->columnSpanFull()
         ]);
     }
@@ -591,7 +605,7 @@ class AnimalResource extends Resource
         return static::$model::count();
     }
 
-    public static function getViewSchema(): array
+    public static function getViewBasicSchema(): array
     {
         return [
             Infolists\Components\Section::make(trans('animal.resource.basic'))
@@ -661,6 +675,12 @@ class AnimalResource extends Resource
                 ->hidden(fn (Model $model) => $model->status !== 'Deceased')
                 ->columns(2),
             ]),
+        ];
+    }
+
+    public static function getViewPhysicalSchema(): array
+    {
+        return [
 
             ///////////////////////////
             Infolists\Components\Section::make(trans('animal.resource.physical'))
@@ -692,7 +712,12 @@ class AnimalResource extends Resource
                         ->label(trans('animal.resource.description'))
                 ])->columns(2)
             ]),
+        ];
+    }
 
+    public static function getViewIdentificationSchema(): array
+    {
+        return [
             Infolists\Components\Section::make(trans('animal.resource.identification'))
             ->schema([
                 Infolists\Components\Group::make()->schema([
@@ -745,7 +770,12 @@ class AnimalResource extends Resource
                         ->columns(1),
                 ])->columns(2),
             ]),
-
+        ];
+    }
+    
+    public static function getViewBirthSchema(): array
+    {
+        return [
             Infolists\Components\Section::make(trans('animal.resource.birth'))
             ->schema([
                 Infolists\Components\Group::make()->schema([
@@ -835,7 +865,12 @@ class AnimalResource extends Resource
                 ->columns(2),
             ]),
 
-            
+        ];
+    }
+
+    public static function getViewAdditionalSchema(): array
+    {
+        return [
             Infolists\Components\Section::make(trans('animal.resource.additional'))
             ->schema([
                 Infolists\Components\Group::make()->schema([

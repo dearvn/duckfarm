@@ -12,6 +12,22 @@ class ViewAnimal extends ViewRecord
 {
     protected static string $resource = AnimalResource::class;
 
+    protected function getHeaderActions(): array
+    {
+        return [
+
+            Actions\ActionGroup::make([
+                Actions\DeleteAction::make(),
+            ])->button()
+            ->label(trans('actions.buttons.record_activity')),
+
+            Actions\EditAction::make(),
+            Actions\ActionGroup::make([
+                Actions\DeleteAction::make(),
+            ])->icon('heroicon-m-ellipsis-horizontal')
+        ];
+    }
+
     public function getTabs(): array
     {
         return [
