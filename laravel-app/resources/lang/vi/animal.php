@@ -5,6 +5,7 @@ return [
         "animals" => "Vụ nuôi",
         "name" => "Tên/Nhãn",
         "type" => "Loại vụ nuôi",
+        "amount" => "Số lượng",
         "breed" => "Giống",
         "gender" => "Giới tính",
         "keywords" => "Nhãn/Từ khóa",

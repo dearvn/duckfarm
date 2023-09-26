@@ -5,6 +5,7 @@ return [
         "animals" => "Animals",
         "name" => "Name/Label",
         "type" => "Animal Type",
+        "amount" => "Amount",
         "breed" => "Breed",
         "gender" => "Sex",
         "keywords" => "Labels/Keywords",

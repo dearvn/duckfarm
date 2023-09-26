@@ -149,7 +149,12 @@ class AnimalResource extends Resource
                             ->relationship('animal_type', 'name')
                             ->searchable(),
                     ])->columns(2),
-                    
+
+                    Forms\Components\Group::make()->schema([
+                        Forms\Components\TextInput::make('amount')
+                        ->label(trans('animal.resource.amount'))
+                        ->numeric()
+                    ])->columns(2),
                     Forms\Components\Group::make()->schema([
                         Forms\Components\TextInput::make('breed')
                             ->inlineLabel()
@@ -504,10 +509,18 @@ class AnimalResource extends Resource
                     ->label(trans('animal.resource.age'))
                     ->searchable()
                     ->sortable(),
+
+                Tables\Columns\TextColumn::make('amount')
+                    ->label(trans('animal.resource.amount'))
+                    ->searchable()
+                    ->sortable(),
+
                 Tables\Columns\TextColumn::make('last_weight')
                     ->label(trans('animal.resource.last_weight'))
                     ->searchable()
                     ->sortable(),
+
+                
                 Tables\Columns\TextColumn::make('status')
                     ->label(trans('animal.resource.status'))
                     ->state(fn (Model $model) => $model->status ? trans('options.'.strtolower(str_replace(" ", "_", $model->status))) : '')
@@ -590,6 +603,12 @@ class AnimalResource extends Resource
                     Infolists\Components\TextEntry::make('animal_type.name')
                         ->inlineLabel()
                         ->label(trans('animal.resource.type')),
+                ])->columns(2),
+
+                Infolists\Components\Group::make()->schema([
+                    Infolists\Components\TextEntry::make('amount')
+                        ->inlineLabel()
+                        ->label(trans('animal.resource.amount')),
                 ])->columns(2),
                 
                 Infolists\Components\Group::make()->schema([
