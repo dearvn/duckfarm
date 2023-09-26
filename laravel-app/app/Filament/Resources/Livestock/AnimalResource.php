@@ -271,7 +271,7 @@ class AnimalResource extends Resource
                     Forms\Components\Group::make()->schema([
                         Forms\Components\Textarea::make('description')
                             ->inlineLabel()
-                            ->label(trans('animal.resource.description'))
+                            ->label(trans('common.resource.description'))
                     ])->columns(2)
                 ]),
 
@@ -587,6 +587,10 @@ class AnimalResource extends Resource
     {
         return [
             //RelationManagers\NotesRelationManager::class,
+            RelationManagers\TreatmentsRelationManager::class,
+            RelationManagers\FeedingsRelationManager::class,
+            RelationManagers\InputsRelationManager::class,
+            RelationManagers\MeasurementsRelationManager::class,
         ];
     }
     
@@ -709,7 +713,7 @@ class AnimalResource extends Resource
                 Infolists\Components\Group::make()->schema([
                     Infolists\Components\TextEntry::make('description')
                         ->inlineLabel()
-                        ->label(trans('animal.resource.description'))
+                        ->label(trans('common.resource.description'))
                 ])->columns(2)
             ]),
         ];

@@ -58,7 +58,7 @@ class CropTypeResource extends Resource
                     ->maxValue(50)
                     ->live(onBlur: true),
                 Forms\Components\Textarea::make('description')
-                    ->label(trans('crop-type.resource.description'))
+                    ->label(trans('common.resource.description'))
                     ->columnSpan('full'),
             ]);
     }

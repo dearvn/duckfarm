@@ -111,6 +111,26 @@ class Animal extends Model
         return $this->hasMany(AnimalNote::class);
     }
 
+    public function animal_treatments(): HasMany
+    {
+        return $this->hasMany(AnimalTreatment::class);
+    }
+
+    public function animal_inputs(): HasMany
+    {
+        return $this->hasMany(AnimalInput::class);
+    }
+
+    public function animal_feedings(): HasMany
+    {
+        return $this->hasMany(AnimalFeeding::class);
+    }
+
+    public function animal_measurements(): HasMany
+    {
+        return $this->hasMany(AnimalMeasurement::class);
+    }
+
     public function age(): Attribute
     {
         return Attribute::make(

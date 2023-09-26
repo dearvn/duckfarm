@@ -52,7 +52,7 @@ class BinsRelationManager extends RelationManager
                     ])->default("quantity"),
 
                 Forms\Components\Textarea::make('description')
-                    ->label(trans('warehouse.resource.description'))
+                    ->label(trans('common.resource.description'))
                     ->columnSpan('full'),
             ]);
     }

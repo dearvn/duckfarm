@@ -4,6 +4,7 @@ namespace App\Models\Livestock;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class AnimalMeasurement extends Model
 {
@@ -30,4 +31,9 @@ class AnimalMeasurement extends Model
     protected $casts = [
         "date" => "date"
     ];
+
+    public function animal(): BelongsTo
+    {
+        return $this->belongsTo(Animal::class);
+    }
 }

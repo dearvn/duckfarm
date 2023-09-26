@@ -17,6 +17,7 @@ use GuzzleHttp\Exception\RequestException;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Database\Eloquent\Model;
 
 class NotesRelationManager extends RelationManager
 {
@@ -31,12 +32,12 @@ class NotesRelationManager extends RelationManager
                         Forms\Components\Group::make()
                             ->schema([
                                 Forms\Components\Textarea::make('description')
-                                    ->label(trans('animal-note.resource.description'))
+                                    ->label(trans('common.resource.description'))
                                     ->rows(6)
                                     ->columnSpan('full'),
 
                                 SpatieMediaLibraryFileUpload::make('attachments')
-                                    ->label(trans('animal-note.resource.attachments'))
+                                    ->label(trans('animal-notes.resource.attachments'))
                                     ->collection('task-documents')
                                     ->multiple()
                                     ->columnSpan('full')
@@ -50,31 +51,31 @@ class NotesRelationManager extends RelationManager
                     Forms\Components\Group::make()
                     ->schema([
                         Forms\Components\DatePicker::make('due_date')
-                            ->label(trans('animal-note.resource.date'))
+                            ->label(trans('animal-notes.resource.date'))
                             ->default(now()),
 
                         Forms\Components\Select::make('category')
-                            ->label(trans('animal-note.resource.category'))
+                            ->label(trans('animal-notes.resource.category'))
                             ->options([
-                                'Breeding' => trans('animal-note.resource.breeding'),
-                                'Deworming' => trans('animal-note.resource.deworming'),
-                                'General' => trans('animal-note.resource.general'),
-                                'Grazing' => trans('animal-note.resource.grazing'),
-                                'Grooming' => trans('animal-note.resource.grooming'),
-                                'Injury' => trans('animal-note.resource.injury'),
-                                'Medication' => trans('animal-note.resource.medication'),
-                                'Moved' => trans('animal-note.resource.moved'),
-                                'Pregnancy Check' => trans('animal-note.resource.pregnancy_check'),
-                                'Supplement' => trans('animal-note.resource.supplement'),
-                                'Vaccination' => trans('animal-note.resource.vaccination'),
-                                'Other' => trans('animal-note.resource.other')
+                                'Breeding' => trans('animal-notes.resource.breeding'),
+                                'Deworming' => trans('animal-notes.resource.deworming'),
+                                'General' => trans('animal-notes.resource.general'),
+                                'Grazing' => trans('animal-notes.resource.grazing'),
+                                'Grooming' => trans('animal-notes.resource.grooming'),
+                                'Injury' => trans('animal-notes.resource.injury'),
+                                'Medication' => trans('animal-notes.resource.medication'),
+                                'Moved' => trans('animal-notes.resource.moved'),
+                                'Pregnancy Check' => trans('animal-notes.resource.pregnancy_check'),
+                                'Supplement' => trans('animal-notes.resource.supplement'),
+                                'Vaccination' => trans('animal-notes.resource.vaccination'),
+                                'Other' => trans('animal-notes.resource.other')
                             ]),
                         
                         TagsInput::make('keywords')
-                            ->label(trans('animal-note.resource.keywords')),
+                            ->label(trans('animal-notes.resource.keywords')),
                         Forms\Components\Select::make('assigned_to')
                             //->relationship('user', 'name')
-                            ->label(trans('animal-note.resource.assigned_to'))
+                            ->label(trans('animal-notes.resource.assigned_to'))
                             ->options(User::all()->pluck('name', 'id'))
                             ->columnSpan('full')
                             ->searchable(),

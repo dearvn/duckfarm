@@ -68,7 +68,7 @@ class TaskResource extends Resource
                                     ->live(onBlur: true),
 
                                 Forms\Components\Textarea::make('description')
-                                    ->label(trans('task.resource.description'))
+                                    ->label(trans('common.resource.description'))
                                     ->columnSpan('full'),
 
                                 Forms\Components\Repeater::make('items')
@@ -135,12 +135,12 @@ class TaskResource extends Resource
                     ->schema([
                         Forms\Components\Select::make('status')
                             ->options([
-                                'To Do' => 'To Do',
-                                'In Progress' => 'In Progress',
-                                'Done' => 'Done',
-                                'Incomplete' => 'Incomplete',
-                                'Missed' => 'Missed',
-                                'Skipped' => 'Skipped'
+                                'To Do' => trans('options.to_do'),
+                                'In Progress' => trans('options.in_progress'),
+                                'Done' => trans('options.done'),
+                                'Incomplete' => trans('options.incomplete'),
+                                'Missed' => trans('options.missed'),
+                                'Skipped' => trans('options.skipped')
                             ])
                             ->default('To Do'),
                         
@@ -221,14 +221,14 @@ class TaskResource extends Resource
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\SelectColumn::make('status')
-                    ->label(trans('task.resource.status'))
+                    ->label(trans('common.resource.status'))
                     ->options([
-                        'To Do' => 'To Do',
-                        'In Progress' => 'In Progress',
-                        'Done' => 'Done',
-                        'Incomplete' => 'Incomplete',
-                        'Missed' => 'Missed',
-                        'Skipped' => 'Skipped'
+                        'To Do' => trans('options.to_do'),
+                        'In Progress' => trans('options.in_progress'),
+                        'Done' => trans('options.done'),
+                        'Incomplete' => trans('options.incomplete'),
+                        'Missed' => trans('options.missed'),
+                        'Skipped' => trans('options.skipped')
                     ])
                     /*->colors([
                         'info' => 'To Do',
@@ -258,12 +258,14 @@ class TaskResource extends Resource
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('status')
-                    ->options(['To Do' => 'To Do',
-                    'In Progress' => 'In Progress',
-                    'Done' => 'Done',
-                    'Incomplete' => 'Incomplete',
-                    'Missed' => 'Missed',
-                    'Skipped' => 'Skipped'])
+                    ->options([
+                        'To Do' => trans('options.to_do'),
+                        'In Progress' => trans('options.in_progress'),
+                        'Done' => trans('options.done'),
+                        'Incomplete' => trans('options.incomplete'),
+                        'Missed' => trans('options.missed'),
+                        'Skipped' => trans('options.skipped')
+                    ])
                     ->multiple()
                     ->searchable(),
 

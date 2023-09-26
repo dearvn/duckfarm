@@ -106,7 +106,7 @@ class ContactResource extends Resource
                 ->columnSpan('full'),
 
                 Forms\Components\Textarea::make('description')
-                ->label(trans('contact.resource.description'))
+                ->label(trans('common.resource.description'))
                 ->columnSpan('full'),
             ]);
     }

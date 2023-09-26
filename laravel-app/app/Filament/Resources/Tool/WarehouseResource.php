@@ -64,7 +64,7 @@ class WarehouseResource extends Resource
                     ->label(trans('warehouse.resource.internal_id'))
                     ->maxValue(50),
                 Forms\Components\Textarea::make('description')
-                    ->label(trans('warehouse.resource.description'))
+                    ->label(trans('common.resource.description'))
                     ->columnSpan('full'),
             ]);
     }
