@@ -13,7 +13,10 @@ class EditAnimal extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            Actions\ViewAction::make(),
+            Actions\ActionGroup::make([
+                Actions\DeleteAction::make(),
+            ])->icon('heroicon-m-ellipsis-horizontal')
         ];
     }
     protected function getRedirectUrl(): string

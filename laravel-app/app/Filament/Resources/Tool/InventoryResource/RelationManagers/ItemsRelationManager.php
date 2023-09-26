@@ -23,6 +23,36 @@ class ItemsRelationManager extends RelationManager
 
     public string $unit;
     
+    public static function getTitle(Model $model, $title): string
+    {
+        return __('common.resource.inventory_items');
+    }
+
+    public static function getLabel(): string
+    {
+        return __('common.resource.inventory_items');
+    }
+
+    public static function getPluralLabel(): string
+    {
+        return __('common.resource.inventory_items');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('common.resource.inventory_items');
+    }
+
+    public static function getModelLabel(): string
+    {
+        return strtolower(__('common.resource.inventory_items'));
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('common.resource.inventory_items');
+    }
+
     public function form(Form $form): Form
     {
         return $form
@@ -74,7 +104,7 @@ class ItemsRelationManager extends RelationManager
                                     ->label(trans('warehouse.resource.internal_id'))
                                     ->maxValue(50),
                                 Forms\Components\Textarea::make('description')
-                                    ->label(trans('warehouse.resource.description'))
+                                    ->label(trans('common.resource.description'))
                                     ->columnSpan('full'),
                             ])
                             ->createOptionAction(
@@ -131,7 +161,7 @@ class ItemsRelationManager extends RelationManager
                                     ])->default("quantity"),
 
                                 Forms\Components\Textarea::make('description')
-                                    ->label(trans('warehouse.resource.description'))
+                                    ->label(trans('common.resource.description'))
                                     ->columnSpan('full'),
                             ])
                             ->createOptionAction(

@@ -140,7 +140,7 @@ class EquipmentResource extends Resource
                     ->label(trans('equipment.resource.insured')),
 
                 Forms\Components\Textarea::make('description')
-                    ->label(trans('equipment.resource.description'))
+                    ->label(trans('common.resource.description'))
                     ->columnSpan('full'),
             ]);
     }

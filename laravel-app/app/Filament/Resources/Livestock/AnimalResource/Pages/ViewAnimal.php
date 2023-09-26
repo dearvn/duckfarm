@@ -18,6 +18,8 @@ class ViewAnimal extends ViewRecord
 
             Actions\ActionGroup::make([
                 Actions\DeleteAction::make(),
+
+                
             ])->button()
             ->label(trans('actions.buttons.record_activity')),
 

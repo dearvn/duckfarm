@@ -8,41 +8,41 @@ use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Database\Eloquent\Model;
 
-class TreatmentsRelationManager extends RelationManager
+class FeedingsRelationManager extends RelationManager
 {
-    protected static string $relationship = 'animal_treatments';
+    protected static string $relationship = 'animal_feedings';
 
     public static function getTitle(Model $model, $title): string
     {
-        return __('common.resource.treatments');
+        return __('common.resource.feedings');
     }
 
     public static function getLabel(): string
     {
-        return __('common.resource.treatments');
+        return __('common.resource.feedings');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('common.resource.treatments');
+        return __('common.resource.feedings');
     }
 
     public static function getNavigationLabel(): string
     {
-        return __('common.resource.treatments');
+        return __('common.resource.feedings');
     }
 
     public static function getModelLabel(): string
     {
-        return strtolower(__('common.resource.treatments'));
+        return strtolower(__('common.resource.feedings'));
     }
 
     public static function getPluralModelLabel(): string
     {
-        return __('common.resource.treatments');
+        return __('common.resource.feedings');
     }
 
     public function form(Form $form): Form

@@ -59,7 +59,7 @@ class GroupResource extends Resource
                     //->maxValue(50)
                     ->live(onBlur: true),
                 Forms\Components\Textarea::make('description')
-                    ->label(trans('group.resource.description'))
+                    ->label(trans('common.resource.description'))
                     ->columnSpan('full'),
                 Forms\Components\Checkbox::make('active_only')
                     ->label(trans('group.resource.active_only'))
