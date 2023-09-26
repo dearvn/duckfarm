@@ -19,6 +19,16 @@ class UploadParam extends SettingsPage
 
     protected static ?string $navigationGroup = 'Settings';
 
+    public static function getNavigationGroup(): ?string
+    {
+        return __('common.resource.settings');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('common.resource.upload_param');
+    }
+
     public function form(Form $form): Form
     {
         return $form

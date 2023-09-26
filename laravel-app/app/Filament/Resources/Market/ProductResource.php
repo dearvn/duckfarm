@@ -29,6 +29,16 @@ class ProductResource extends Resource
 
     protected static ?int $navigationSort = 1;
 
+    public static function getNavigationGroup(): ?string
+    {
+        return __('common.resource.market');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('common.resource.products');
+    }
+
     public static function form(Form $form): Form
     {
         return $form

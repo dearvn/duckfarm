@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Filament\Resources\Market;
+namespace App\Filament\Resources\Livestock;
 
-use App\Filament\Resources\Market\StoreResource\Pages;
-use App\Filament\Resources\Market\StoreResource\RelationManagers;
-use App\Models\Market\Store;
+use App\Filament\Resources\Livestock\AnimalTreatmentResource\Pages;
+use App\Filament\Resources\Livestock\AnimalTreatmentResource\RelationManagers;
+use App\Models\Livestock\AnimalTreatment;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,32 +13,13 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class StoreResource extends Resource
+class AnimalTreatmentResource extends Resource
 {
-    protected static ?string $model = Store::class;
+    protected static ?string $model = AnimalTreatment::class;
 
-    protected static ?string $slug = 'market/stores';
+    //protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $recordTitleAttribute = 'name';
-
-    protected static ?string $navigationGroup = 'Market';
-
-    //protected static ?string $navigationIcon = 'heroicon-o-shopping-cart';
-
-    protected static ?string $navigationLabel = 'Stores';
-
-    protected static ?int $navigationSort = 2;
-    
-
-    public static function getNavigationGroup(): ?string
-    {
-        return __('common.resource.market');
-    }
-
-    public static function getNavigationLabel(): string
-    {
-        return __('common.resource.stores');
-    }
+    protected static bool $shouldRegisterNavigation = false;
 
     public static function form(Form $form): Form
     {
@@ -77,9 +58,9 @@ class StoreResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListStores::route('/'),
-            'create' => Pages\CreateStore::route('/create'),
-            'edit' => Pages\EditStore::route('/{record}/edit'),
+            'index' => Pages\ListAnimalTreatments::route('/'),
+            'create' => Pages\CreateAnimalTreatment::route('/create'),
+            'edit' => Pages\EditAnimalTreatment::route('/{record}/edit'),
         ];
     }    
 }

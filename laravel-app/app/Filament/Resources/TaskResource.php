@@ -33,6 +33,16 @@ class TaskResource extends Resource
 
     protected static ?int $navigationSort = 2;
 
+     /*public static function getNavigationGroup(): ?string
+    {
+        return __('common.resource.reports');
+    }*/
+
+    public static function getNavigationLabel(): string
+    {
+        return __('common.resource.task');
+    }
+    
     public static function form(Form $form): Form
     {
         return $form

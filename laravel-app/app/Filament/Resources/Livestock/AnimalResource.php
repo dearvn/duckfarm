@@ -38,6 +38,16 @@ class AnimalResource extends Resource
 
     protected static ?int $navigationGroupSort = 1;
 
+    public static function getNavigationGroup(): ?string
+    {
+        return __('common.resource.livestock');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('common.resource.animals');
+    }
+
     public static function infolist(Infolist $infolist): Infolist
     {
         return $infolist->schema([
@@ -519,9 +529,9 @@ class AnimalResource extends Resource
                     ->searchable(),
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
-                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -533,7 +543,7 @@ class AnimalResource extends Resource
     public static function getRelations(): array
     {
         return [
-            RelationManagers\NotesRelationManager::class,
+            //RelationManagers\NotesRelationManager::class,
         ];
     }
     

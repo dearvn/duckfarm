@@ -29,6 +29,17 @@ class GroupResource extends Resource
 
     protected static ?int $navigationSort = 3;
 
+    public static function getNavigationGroup(): ?string
+    {
+        return __('common.resource.livestock');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('common.resource.livestock_groups');
+    }
+    
+
     public static function form(Form $form): Form
     {
         return $form

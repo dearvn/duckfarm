@@ -29,6 +29,16 @@ class LocationResource extends Resource
 
     protected static ?int $navigationSort = 4;
     
+    public static function getNavigationGroup(): ?string
+    {
+        return __('common.resource.plantings');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('common.resource.grow_locations');
+    }
+
     public static function form(Form $form): Form
     {
         return $form

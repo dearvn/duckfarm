@@ -28,6 +28,17 @@ class StandardReportResource extends Resource
     protected static ?string $navigationLabel = 'Standard Reports';
 
     protected static ?int $navigationSort = 1;
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('common.resource.reports');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('common.resource.standard_reports');
+    }
+
     public static function form(Form $form): Form
     {
         return $form

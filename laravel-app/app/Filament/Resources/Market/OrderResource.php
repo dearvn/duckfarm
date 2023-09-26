@@ -28,6 +28,17 @@ class OrderResource extends Resource
     protected static ?string $navigationLabel = 'Orders';
 
     protected static ?int $navigationSort = 3;
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('common.resource.market');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('common.resource.orders');
+    }
+
     public static function form(Form $form): Form
     {
         return $form

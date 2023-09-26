@@ -29,6 +29,17 @@ class EquipmentResource extends Resource
 
     protected static ?int $navigationSort = 1;
 
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('common.resource.resources');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('common.resource.equipment');
+    }
+    
     public static function form(Form $form): Form
     {
         return $form

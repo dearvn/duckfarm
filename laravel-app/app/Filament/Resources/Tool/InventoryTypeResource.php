@@ -29,6 +29,15 @@ class InventoryTypeResource extends Resource
 
     protected static ?int $navigationSort = 4;
 
+    public static function getNavigationGroup(): ?string
+    {
+        return __('common.resource.resources');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('common.resource.inventory_types');
+    }
     public static function form(Form $form): Form
     {
         return $form

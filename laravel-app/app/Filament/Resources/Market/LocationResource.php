@@ -28,6 +28,17 @@ class LocationResource extends Resource
     protected static ?string $navigationLabel = 'Locations';
 
     protected static ?int $navigationSort = 4;
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('common.resource.market');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('common.resource.locations');
+    }
+
     public static function form(Form $form): Form
     {
         return $form

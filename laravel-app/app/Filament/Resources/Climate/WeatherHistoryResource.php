@@ -30,6 +30,16 @@ class WeatherHistoryResource extends Resource
 
     protected static ?int $navigationSort = 1;
 
+    public static function getNavigationGroup(): ?string
+    {
+        return __('common.resource.climate');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('common.resource.weather_history');
+    }
+
     public static function form(Form $form): Form
     {
         return $form

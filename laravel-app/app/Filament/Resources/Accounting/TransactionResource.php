@@ -28,6 +28,17 @@ class TransactionResource extends Resource
     protected static ?string $navigationLabel = 'Transactions';
 
     protected static ?int $navigationSort = 1;
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('common.resource.accounting');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('common.resource.transactions');
+    }
+
     public static function form(Form $form): Form
     {
         return $form
