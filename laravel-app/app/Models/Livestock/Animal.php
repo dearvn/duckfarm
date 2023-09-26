@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Carbon\Carbon;
 
 class Animal extends Model
 {
@@ -106,5 +108,12 @@ class Animal extends Model
     public function animal_notes(): HasMany
     {
         return $this->hasMany(AnimalNote::class);
+    }
+
+    public function age(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => Carbon::parse($this->birth_date)->age,
+        );
     }
 }

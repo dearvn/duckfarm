@@ -375,7 +375,7 @@ class AnimalResource extends Resource
                                 'Purchased' => trans('options.purchased')
                             ])
                             ->default('Raised')
-                            
+
                             ->reactive()
                             ->columns(1),
                     ])
@@ -496,6 +496,7 @@ class AnimalResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('gender')
                     ->label(trans('animal.resource.gender'))
+                    ->state(fn (Model $model) => $model->gender ? trans('options.'.strtolower($model->gender)) : '')
                     ->searchable()
                     ->sortable(),
                
@@ -509,6 +510,7 @@ class AnimalResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('status')
                     ->label(trans('animal.resource.status'))
+                    ->state(fn (Model $model) => $model->status ? trans('options.'.strtolower(str_replace(" ", "_", $model->status))) : '')
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('animal_type.name')
