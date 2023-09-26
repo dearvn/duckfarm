@@ -25,6 +25,7 @@ class Animal extends Model
     protected $fillable = [
         "name",
         "type",
+        "amount",
         "breed",
         "gender",
         "keywords",
