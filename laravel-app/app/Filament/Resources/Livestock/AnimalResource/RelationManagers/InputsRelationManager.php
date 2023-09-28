@@ -4,8 +4,11 @@ namespace App\Filament\Resources\Livestock\AnimalResource\RelationManagers;
 
 use App\Models\Tool\Inventory;
 use App\Models\Tool\InventoryItem;
+use App\Models\Tool\InventoryLocation;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
+use Filament\Forms\Set;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -50,23 +53,20 @@ class InputsRelationManager extends RelationManager
 
     public function form(Form $form): Form
     {
-        $inventories = Inventory::all();
+        $locations = InventoryLocation::all();
         $options = [];
-        foreach($inventories as $inventory) {
-            if (empty($inventory->inventory_items) || empty($inventory->inventory_type)) {
-                continue;
-            }
-
-            $inventory_name = $inventory->name."(".$inventory->inventory_type->name.")";
+        $units = [];
+        $rest_amounts = [];
+        foreach($locations as $item) {
+            $inventory_name = $item->inventory_name;
             if (!isset($options[$inventory_name])) {
                 $options[$inventory_name] = [];
             }
-            foreach($inventory->inventory_items as $item) {
-                if (empty($item->warehouse->name) || empty($item->bin->name)) {
-                    continue;
-                }
-                $options[$inventory_name][$item->id] = $inventory->name." - ".$item->warehouse->name." : " .$item->bin->name;
-            }
+            $amount = $item->amount - ($item->input_amount + $item->feeding_amount + $item->treatment_amount);
+            $options[$inventory_name][$item->location_id] = $inventory_name." ".trans('common.resource.from')." ".$item->warehouse_name." : " .$item->bin_name. " (".$amount." ".trans("options.{$item->unit}").")";
+
+            $units[$item->location_id] = $item->unit;
+            $rest_amounts[$item->location_id] = $amount;
         }
 
         return $form
@@ -77,7 +77,12 @@ class InputsRelationManager extends RelationManager
                             ->label(trans('animal-inputs.resource.location_id'))
                             ->options($options)
                             ->inlineLabel()
-                            ->searchable(),
+                            ->searchable()
+                            ->reactive()
+                            ->preload()
+                            /*->afterStateUpdated(function (Set $set, Get $get) {
+                                $set('unit', $units[$get('location_id')]);
+                            })*/
                     ])->columns(2),      
                     
                     Forms\Components\Group::make()->schema([
@@ -86,9 +91,12 @@ class InputsRelationManager extends RelationManager
                             ->inlineLabel()
                             ->numeric()
                             ->required()
-                            ->minValue(0),
+                            ->postfix(fn (Get $get): string => ($get('location_id') ? trans('options.'.$units[$get('location_id')]) : ''))
+                            ->helperText(fn (Get $get): string => ($get('location_id') ? trans('common.resource.max')." ".$rest_amounts[$get('location_id')]." ".trans('options.'.$units[$get('location_id')]) : ''))
+                            ->minValue(0)
+                            ->maxValue(fn (Get $get): string => ($get('location_id') ? $rest_amounts[$get('location_id')] : 0)),
                         
-                        Forms\Components\Select::make('unit')
+                        /*Forms\Components\Select::make('unit')
                             ->inlineLabel()
                             ->hiddenLabel()
                             ->options([
@@ -106,6 +114,11 @@ class InputsRelationManager extends RelationManager
                                 "quantity" => trans("options.quantity"),
                                 "tonnes" => trans("options.tonnes")
                             ])
+                            ->preload()
+                            //->disabled()
+                            //->state(fn (Get $get): string => (!empty($get('location_id')) ? $units[$get('location_id')] : ''))
+                            ->default(fn (Get $get): string => $get('location_id') ? $units[$get('location_id')] : '')
+                        */
                     ])->columns(2),
 
                     Forms\Components\Group::make()->schema([
@@ -150,14 +163,15 @@ class InputsRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('id')
             ->columns([
-                Tables\Columns\TextColumn::make('gender')
+                Tables\Columns\TextColumn::make('location_id')
                 ->label(trans('animal-inputs.resource.location_id'))
-                    ->state(fn (Model $model) => $model->inventory_item ? $model->inventory_item->inventory->name.' '.$model->inventory_item->warehouse->name.' - '.$model->inventory_item->bin->name: '')
+                    ->state(fn (Model $model) => $model->inventory_location ? $model->inventory_location->inventory_name." - ".$model->inventory_location->warehouse_name." : ".$model->inventory_location->bin_name: '')
                     ->searchable()
                     ->sortable(),
                
                 Tables\Columns\TextColumn::make('amount')
                     ->label(trans('animal-inputs.resource.amount'))
+                    ->state(fn (Model $model) => $model->amount ." ". trans("options.{$model->inventory_location->unit}"))
                     ->searchable()
                     ->sortable(),
                 

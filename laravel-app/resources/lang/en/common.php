@@ -37,22 +37,25 @@ return [
         "inventory" => "Inventory",
         "inventory_types" => "Inventory Types",
 
-        'contact' => 'Contact',
-        'image_param' => 'Image Params',
-        'report_param' => 'Report Params',
-        'upload_param' => 'Upload Param',
+        "contact" => "Contact",
+        "image_param" => "Image Params",
+        "report_param" => "Report Params",
+        "upload_param" => "Upload Param",
         
-        'treatments' => "Treatments",
-        'feedings' => "Feedings",
-        'inputs' => "Inputs",
-        'measurements' => "Measurement",
-
-        'inventory_items' => 'Inventory Items',
+        "treatments" => "Treatments",
+        "feedings" => "Feedings",
+        "inputs" => "Inputs",
+        "measurements" => "Measurement",
+        "bin" => 'bin',
+        "inventory_items" => "Inventory Items",
 
         "currency_symbol" => "$",
         "kg" => "kg",
         "keywords" => "Keywords",
         "description" => "Description",
-        "status" => "Status"
+        "status" => "Status",
+        "from" => "from",
+        "max" => "Max"
+
     ]
 ];

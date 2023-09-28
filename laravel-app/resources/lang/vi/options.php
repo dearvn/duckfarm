@@ -12,7 +12,7 @@ return [
     "kiloliter" => "kilô lít",
     "liter" => "lít",
     "milliliter" => "mili lít",
-    "quantity" => "số lượng",
+    "quantity" => "cái",
     "tonnes" => "tấn",
 
     // Purchased options
