@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
-class Contact extends Model
+class Contact extends BaseModel
 {
     use HasFactory;
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
@@ -34,7 +34,8 @@ class Contact extends Model
         "postal_code",
         "description",
         'created_by',
-        'updated_by'
+        'updated_by',
+        'team_id'
     ];
 
     protected $casts = [

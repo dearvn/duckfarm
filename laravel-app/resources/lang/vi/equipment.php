@@ -6,7 +6,7 @@ return [
         "created_at" => "Created At",
         "updated_at" => "Updated At",
         "name" => "Name/Label",
-        "type" => "Animal Type",
+        "type" => "Type",
         'tractor' => 'Tractor, Harvester, etc',
         'kubato' => 'John Deere, Kubato, etc',
         "status" => "Status",

@@ -92,9 +92,9 @@ class InputsRelationManager extends RelationManager
                             ->numeric()
                             ->required()
                             ->postfix(fn (Get $get): string => ($get('location_id') ? trans('options.'.$units[$get('location_id')]) : ''))
-                            ->helperText(fn (Get $get): string => ($get('location_id') ? trans('common.resource.max')." ".$rest_amounts[$get('location_id')]." ".trans('options.'.$units[$get('location_id')]) : ''))
+                            ->helperText(fn (Get $get): string => ($get('location_id') ?  trans('common.resource.max')." ".($get('id') ? $rest_amounts[$get('location_id')] + $get('amount'): $rest_amounts[$get('location_id')])." ".trans('options.'.$units[$get('location_id')]) : ''))
                             ->minValue(0)
-                            ->maxValue(fn (Get $get): string => ($get('location_id') ? $rest_amounts[$get('location_id')] : 0)),
+                            ->maxValue(fn (Get $get): string => ($get('location_id') ? ($get('id') ? $rest_amounts[$get('location_id')] + $get('amount'): $rest_amounts[$get('location_id')]) : 0)),
                         
                         /*Forms\Components\Select::make('unit')
                             ->inlineLabel()

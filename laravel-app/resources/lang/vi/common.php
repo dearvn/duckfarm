@@ -54,6 +54,7 @@ return [
         "description" => "Mô tả",
         "status" => "Trạng thái",
         "from" => "từ",
-        "max" => "Tối đa"
+        "max" => "Tối đa",
+        "created_by" => "Tạo bởi"
     ]
 ];

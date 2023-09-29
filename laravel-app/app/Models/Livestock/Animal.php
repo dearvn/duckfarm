@@ -2,6 +2,7 @@
 
 namespace App\Models\Livestock;
 
+use App\Models\BaseModel;
 use App\Models\Contact;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -11,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Carbon\Carbon;
 
-class Animal extends Model
+class Animal extends BaseModel
 {
     use HasFactory;
 

@@ -17,6 +17,7 @@ return [
         "cost" => "Treatment Total Cost",
         "record_transaction" => "Record Expense",
         "date" => "Treatment Date",
-        
+        "rump" => "Rump, Flank, Neck",
+        "alpine" => "example: Alpine Vet, etc",
     ]
 ];

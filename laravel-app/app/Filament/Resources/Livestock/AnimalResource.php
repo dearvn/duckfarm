@@ -586,7 +586,7 @@ class AnimalResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //RelationManagers\NotesRelationManager::class,
+            RelationManagers\NotesRelationManager::class,
             RelationManagers\TreatmentsRelationManager::class,
             RelationManagers\FeedingsRelationManager::class,
             RelationManagers\InputsRelationManager::class,
