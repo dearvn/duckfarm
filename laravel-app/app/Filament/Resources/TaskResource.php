@@ -6,6 +6,7 @@ use App\Filament\Resources\TaskResource\Pages;
 use App\Filament\Resources\TaskResource\RelationManagers;
 use App\Filament\Resources\TaskResource\Widgets\TaskStats;
 use App\Models\Task;
+use App\Models\Administration\Team;
 use App\Models\User;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\Action;
@@ -134,6 +135,7 @@ class TaskResource extends Resource
                     Forms\Components\Group::make()
                     ->schema([
                         Forms\Components\Select::make('status')
+                            ->label(trans('common.resource.status'))
                             ->options([
                                 'To Do' => trans('options.to_do'),
                                 'In Progress' => trans('options.in_progress'),
@@ -145,12 +147,14 @@ class TaskResource extends Resource
                             ->default('To Do'),
                         
                         Forms\Components\Select::make('assigned_to')
+                            ->label(trans('task.resource.assigned_to'))
                             //->relationship('user', 'name')
                             ->options(User::all()->pluck('name', 'id'))
                             ->columnSpan('full')
                             ->searchable(),
 
                         Forms\Components\Select::make('priority')
+                            ->label(trans('task.resource.priority')) 
                             ->options([
                                 '5' => 'Highest',
                                 '4' => 'High',
@@ -161,10 +165,11 @@ class TaskResource extends Resource
                             ->default('Does not repeat'),
 
                         Forms\Components\DatePicker::make('due_date')
-                            ->label('Due Date')
+                            ->label(trans('task.resource.due_date'))
                             ->default(now()),
 
                         Forms\Components\Select::make('repeats')
+                            ->label(trans('task.resource.repeats')) 
                             ->options([
                                 'Does not repeat' => 'Does not repeat',
                                 'Daily' => 'Daily',
@@ -175,6 +180,7 @@ class TaskResource extends Resource
                             ->default('Does not repeat'),
 
                         Forms\Components\TextInput::make('hours_spent')
+                            ->label(trans('task.resource.hours_spent')) 
                             ->label('Hours Spent')
                             ->numeric()
                             ->step(0.1)
@@ -203,7 +209,12 @@ class TaskResource extends Resource
     {
         return $table
             ->columns([
-                
+                Tables\Columns\TextColumn::make('team.name')
+                    ->label(trans('team.resource.team'))
+                    ->searchable()
+                    ->toggleable()
+                    ->toggledHiddenByDefault(false)
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('name')
                     ->label(trans('task.resource.task'))
                     ->searchable()
@@ -242,7 +253,7 @@ class TaskResource extends Resource
                     ->searchable()
                     ->sortable(),    
                 Tables\Columns\TextColumn::make('updated_at')
-                    ->label('Last Updated')
+                    ->label(trans('common.resource.updated_at'))
                     ->dateTime('d/m/Y H:i')
                     ->date()
                     ->sortable()
@@ -250,14 +261,19 @@ class TaskResource extends Resource
                     ->toggledHiddenByDefault(),
 
                 Tables\Columns\TextColumn::make('created_at')
-                    ->label(trans('task.resource.created_at'))
+                    ->label(trans('common.resource.created_at'))
                     ->dateTime('d/m/Y H:i')
                     ->sortable()
                     ->toggleable()
                     ->toggledHiddenByDefault(),
             ])
             ->filters([
+                Tables\Filters\SelectFilter::make('team_id')
+                    ->label(trans('team.resource.team')) 
+                    ->options(Team::query()->pluck('name', 'id'))
+                    ->searchable(),
                 Tables\Filters\SelectFilter::make('status')
+                    ->label(trans('common.resource.status')) 
                     ->options([
                         'To Do' => trans('options.to_do'),
                         'In Progress' => trans('options.in_progress'),
@@ -270,12 +286,15 @@ class TaskResource extends Resource
                     ->searchable(),
 
                 Tables\Filters\Filter::make('created_at')
+                    ->label(trans('common.resource.created_at')) 
                     ->form([
                         Forms\Components\DatePicker::make('created_from')
                             ->format('d/m/Y')
+                            ->label(trans('common.resource.created_from')) 
                             ->placeholder(fn ($state): string => date('d/m/Y')),
                         Forms\Components\DatePicker::make('created_until')
                             ->format('d/m/Y')
+                            ->label(trans('common.resource.created_until')) 
                             ->placeholder(fn ($state): string => now()->format('d/m/Y')),
                     ])
                     ->query(function (Builder $query, array $data): Builder {
@@ -306,7 +325,7 @@ class TaskResource extends Resource
                     Tables\Actions\EditAction::make(),
                     Tables\Actions\DeleteAction::make(),
                     Action::make('complete')
-                        ->label('Done')
+                        ->label(trans('common.resource.done'))
                         ->action(fn (Model $record) => self::completeTask($record))
                         ->icon('heroicon-m-paper-airplane')
                         ->outlined()
@@ -318,7 +337,7 @@ class TaskResource extends Resource
                 Tables\Actions\DeleteBulkAction::make()
                     ->action(function () {
                         Notification::make()
-                            ->title('Now, now, don\'t be cheeky, leave some records for others to play with!')
+                            ->title(trans('common.message.delete_notify'))
                             ->warning()
                             ->send();
                     }),

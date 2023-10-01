@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\Market\LocationResource\Pages;
+namespace App\Filament\Resources\Administration\TeamResource\Pages;
 
-use App\Filament\Resources\Market\LocationResource;
+use App\Filament\Resources\Administration\TeamResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditLocation extends EditRecord
+class EditTeam extends EditRecord
 {
-    protected static string $resource = LocationResource::class;
+    protected static string $resource = TeamResource::class;
 
     protected function getHeaderActions(): array
     {

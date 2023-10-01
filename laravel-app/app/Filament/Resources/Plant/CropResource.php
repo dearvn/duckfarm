@@ -17,7 +17,7 @@ class CropResource extends Resource
 {
     protected static ?string $model = Crop::class;
 
-    protected static ?string $slug = 'planting/crop';
+    protected static ?string $slug = 'plants';
 
     protected static ?string $recordTitleAttribute = 'name';
 

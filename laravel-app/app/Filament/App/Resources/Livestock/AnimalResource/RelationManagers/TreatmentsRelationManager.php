@@ -99,32 +99,17 @@ class TreatmentsRelationManager extends RelationManager
                     ])->columns(1),
 
 
-                    Forms\Components\Group::make()
+                    Forms\Components\Grid::make(3)
                     ->schema([
                         Forms\Components\TextInput::make('product')
-                            ->label(trans('animal-treatments.resource.product'))
-                            ->columnStart([
-                                'sm' => 1,
-                                'xl' => 1,
-                                '2xl' => 1,
-                            ]),
+                            ->label(trans('animal-treatments.resource.product')),
                         Forms\Components\TextInput::make('batch')
-                            ->label(trans('animal-treatments.resource.batch'))
-                            ->columnStart([
-                                'sm' => 2,
-                                'xl' => 3,
-                                '2xl' => 3,
-                            ]),
+                            ->label(trans('animal-treatments.resource.batch')),
                         Forms\Components\TextInput::make('inventory_amount')
-                            ->label(trans('animal-treatments.resource.inventory_amount'))
-                            ->columnStart([
-                                'sm' => 3,
-                                'xl' => 4,
-                                '2xl' => 6,
-                            ]),
-                    ])->columnSpanFull(),
+                            ->label(trans('animal-treatments.resource.inventory_amount')),
+                    ]),
 
-                    Forms\Components\Group::make()
+                    Forms\Components\Grid::make(2)
                     ->schema([
                         Forms\Components\Select::make('location_id')
                             ->label(trans('animal-treatments.resource.location_id'))
@@ -132,12 +117,7 @@ class TreatmentsRelationManager extends RelationManager
                             ->searchable()
                             ->reactive()
                             ->preload()
-                            ->required()
-                            ->columnStart([
-                                'sm' => 1,
-                                'xl' => 1,
-                                '2xl' => 1,
-                            ]),
+                            ->required(),
                         Forms\Components\TextInput::make('amount')
                             ->label(trans('animal-treatments.resource.amount'))
                             ->numeric()
@@ -146,16 +126,10 @@ class TreatmentsRelationManager extends RelationManager
                             ->helperText(fn (Get $get): string => ($get('location_id') ?  trans('common.resource.max')." ".($get('id') ? $rest_amounts[$get('location_id')] + $get('amount'): $rest_amounts[$get('location_id')])." ".trans('options.'.$units[$get('location_id')]) : ''))
                             ->minValue(0)
                             ->maxValue(fn (Get $get): string => ($get('location_id') ? ($get('id') ? $rest_amounts[$get('location_id')] + $get('amount'): $rest_amounts[$get('location_id')]) : 0))
-                            ->columnStart([
-                                'sm' => 2,
-                                'xl' => 3,
-                                '2xl' => 3,
-                            ]),
-                        
+                            ,
+                    ]),
 
-                    ])->columnSpanFull(),
-
-                    Forms\Components\Group::make()
+                    Forms\Components\Grid::make(2)
                     ->schema([
                         Forms\Components\Select::make('mode')
                             ->label(trans('animal-treatments.resource.mode'))
@@ -169,71 +143,36 @@ class TreatmentsRelationManager extends RelationManager
                                 'Topical (on the skin)'=> trans("options.topical"),
                                 'Other'=> trans("options.other")
                             ])
-                            ->columnStart([
-                                'sm' => 1,
-                                'xl' => 1,
-                                '2xl' => 1,
-                            ])
                             ->preload(),
 
                         Forms\Components\TextInput::make('site')
                             ->label(trans('animal-treatments.resource.site'))
-                            ->placeholder(trans('animal-treatments.resource.rump'))
-                            ->columnStart([
-                                'sm' => 2,
-                                'xl' => 2,
-                                '2xl' => 2,
-                            ]),
+                            ->placeholder(trans('animal-treatments.resource.rump')),
 
-                    ])->columnSpanFull(),
+                    ]),
 
-                    Forms\Components\Group::make()
+                    Forms\Components\Grid::make()
                     ->schema([
                         Forms\Components\TextInput::make('days_to_withdrawal')
                             ->label(trans('animal-treatments.resource.days_to_withdrawal'))
-                            ->numeric()
-                            ->columnStart([
-                                'sm' => 1,
-                                'xl' => 1,
-                                '2xl' => 1,
-                            ]),
+                            ->numeric(),
                         Forms\Components\DatePicker::make('retreat_date')
-                            ->label(trans('animal-treatments.resource.retreat_date'))
-                            ->columnStart([
-                                'sm' => 2,
-                                'xl' => 2,
-                                '2xl' => 2,
-                            ]),
+                            ->label(trans('animal-treatments.resource.retreat_date')),
                         
-                    ])->columnSpanFull(),
+                    ]),
 
-                    Forms\Components\Group::make()
+                    Forms\Components\Grid::make()
                     ->schema([
                         Forms\Components\TextInput::make('technician')
                             ->label(trans('animal-treatments.resource.technician'))
-                            ->placeholder(trans('animal-treatments.resource.alpine'))
-                            ->columnStart([
-                                'sm' => 1,
-                                'xl' => 1,
-                                '2xl' => 1,
-                            ]),
+                            ->placeholder(trans('animal-treatments.resource.alpine')),
                         Forms\Components\TextInput::make('cost')
                             ->label(trans('animal-treatments.resource.cost'))
                             ->numeric()
-                            ->prefix(trans('common.resource.currency_symbol'))
-                            ->columnStart([
-                                'sm' => 2,
-                                'xl' => 2,
-                                '2xl' => 2,
-                            ]),
+                            ->prefix(trans('common.resource.currency_symbol')),
                         Forms\Components\Checkbox::make('record_transaction')
-                            ->label(trans('animal-treatments.resource.record_transaction'))
-                            ->columnStart([
-                                'sm' => 3,
-                                'xl' => 3,
-                                '2xl' => 3,
-                            ]),
-                    ])->columnSpanFull(),
+                            ->label(trans('animal-treatments.resource.record_transaction')),
+                    ]),
 
                     Forms\Components\Group::make()
                     ->schema([
@@ -242,24 +181,15 @@ class TreatmentsRelationManager extends RelationManager
                             
                     ])->columnSpanFull(),
 
-                    Forms\Components\Group::make()
+                    Forms\Components\Grid::make()
                     ->schema([
                         Forms\Components\DatePicker::make('date')
                             ->label(trans('animal-treatments.resource.date'))
-                            ->columnStart([
-                                'sm' => 1,
-                                'xl' => 1,
-                                '2xl' => 1,
-                            ])->default(now()),
+                            ->default(now()),
                         TagsInput::make('keywords')
                             ->label(trans('animal.resource.keywords'))
                             ->placeholder(trans('animal.resource.calf'))
-                            ->columnStart([
-                                'sm' => 2,
-                                'xl' => 2,
-                                '2xl' => 2,
-                            ])
-                    ])->columnSpanFull(),
+                    ]),
 
                 ]),
 

@@ -13,7 +13,7 @@ class BaseModel extends Model
 
     protected static function booted(): void
     {
-        if (auth()->check()) {
+        if (auth()->check() && auth()->id() != 1) {
             static::addGlobalScope('team', function (Builder $query) {
                 $query->where('team_id', auth()->user()->team_id);
             });

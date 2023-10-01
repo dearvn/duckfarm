@@ -18,10 +18,7 @@ return new class extends Migration
             $table->string('contact_name')->nullable();
             $table->string('contact_phone')->nullable();
             $table->string('contact_email')->nullable();
-            $table->string('address')->nullable();
-            $table->string('city')->nullable();
-            $table->string('state')->nullable();
-            $table->string('zip_code')->nullable();
+            $table->text('description')->nullable();
             $table->boolean('active')->default(0);
             $table->decimal('credit', 8, 2)->index()->default(0);
             $table->decimal('balance', 8, 2)->index()->default(0);
