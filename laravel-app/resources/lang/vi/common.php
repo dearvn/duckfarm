@@ -13,6 +13,7 @@ return [
         "climate" => "Khí hậu",
         "reports" => "Báo cáo",
         "settings" => "Cặt đặt",
+        "administration" => "Administration",
 
         "animals" => "Vật nuôi",
         "animal_types" => "Loại vật nuôi",
@@ -40,6 +41,9 @@ return [
         "image_param" => "Thông số hình ảnh",
         "report_param" => "Thông số báo cáo",
         "upload_param" => "Thông số upload",
+        "teams" => "Công ty",
+        "roles" => "Vai trò",
+        "users" => "Người dùng",
 
         "treatments" => "Chữa trị",
         "feedings" => "Cho ăn",
@@ -55,6 +59,14 @@ return [
         "status" => "Trạng thái",
         "from" => "từ",
         "max" => "Tối đa",
-        "created_by" => "Tạo bởi"
+        "created_by" => "Tạo bởi",
+        "created_from" => "Từ ngày",
+        "created_until" => "Đến ngày",
+        "done" => "Xong",
+
+    ],
+    "message" => [
+        "delete_notify" => "Bạn có chắc chắn xóa bản ghi này?",
+
     ]
 ];

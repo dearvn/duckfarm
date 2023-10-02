@@ -13,8 +13,11 @@ return [
         "climate" => "Climate",
         "reports" => "Reports",
         "settings" => "Settings",
-        
+        "administration" => "Administration",
+
+
         "animal" => "Animal",
+        "animals" => "Animals",
         "animal_types" => "Animal Types",
         "livestock_groups" => "Livestock Groups",      
         "crops" => "Crops",
@@ -36,7 +39,10 @@ return [
         "warehouses" => "Warehouses",
         "inventory" => "Inventory",
         "inventory_types" => "Inventory Types",
-
+        "teams" => "Teams",
+        "roles" => "Roles",
+        "users" => "Users",
+        
         "contact" => "Contact",
         "image_param" => "Image Params",
         "report_param" => "Report Params",
@@ -56,7 +62,14 @@ return [
         "status" => "Status",
         "from" => "from",
         "max" => "Max",
-        "created_by" => "Created by"
+        "created_by" => "Created by",
+        "created_from" => "Created From",
+        "created_until" => "Created Until",
+        "done" => "Done",
+
+    ],
+    "message" => [
+        "delete_notify" => "Are you sure to delete this record?",
 
     ]
 ];

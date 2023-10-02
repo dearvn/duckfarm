@@ -23,15 +23,9 @@ class TeamResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name';
 
-    protected static ?string $navigationGroup = 'Administration';
+    protected static ?int $navigationSort = 3;
 
-    ////protected static ?string $navigationIcon = 'heroicon-o-key';
-
-    //protected static ?string $navigationLabel = 'Teams';
-
-    protected static ?int $navigationSort = 1;
-
-    protected static ?int $navigationGroupSort = 1;
+    protected static ?int $navigationGroupSort = 3;
 
     public static function getNavigationGroup(): ?string
     {
