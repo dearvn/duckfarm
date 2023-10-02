@@ -4,9 +4,9 @@ return [
     "resource" => [
         "country" => "Quốc gia",
         "address" => "Địa chỉ",
-        "city" => "Thành phố",
+        "city" => "Quận Huyện",
         "state" => "Tỉnh",
-        "zip" => "Mã bưu điện",
+        "zip" => "Mã quốc gia",
         "description" => "Mô tả",
     ]
 ];

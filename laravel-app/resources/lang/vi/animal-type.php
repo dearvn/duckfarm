@@ -3,9 +3,9 @@
 return [
     "resource" => [
         "id" => "ID",
-        "created_at" => "Created At",
-        "updated_at" => "Updated At",
-        "name" => "Name",
-        'description' => 'Description',
+        "created_at" => "Tạo ngày",
+        "updated_at" => "Cập nhật lần cuối",
+        "name" => "Tên loại vật nuôi",
+        'description' => 'Mô tả thêm',
     ]
 ];
