@@ -2,10 +2,11 @@
 
 namespace App\Models\Livestock;
 
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AnimalType extends Model
+class AnimalType extends BaseModel
 {
     use HasFactory;
 

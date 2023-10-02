@@ -6,10 +6,12 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class AnimalNote extends Model
+class AnimalNote extends Model implements HasMedia
 {
-    use HasFactory;
+    use HasFactory, InteractsWithMedia;
 
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
@@ -33,7 +35,8 @@ class AnimalNote extends Model
 
     protected $casts = [
         "date" => "date",
-        //"attachments" => "json"
+        //"attachments" => "json",
+        "keywords" => "array"
     ];
 
     public function assigned_to(): BelongsTo

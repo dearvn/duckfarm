@@ -17,6 +17,7 @@ return [
         "cost" => "Tổng chi phí điều trị",
         "record_transaction" => "Ghi lại chi phí",
         "date" => "Ngày điều trị",
-        
+        "rump" => "Mông, sườn, cổ",
+        "alpine" => "ví dụ: Alpine Vet, v.v."
     ]
 ];

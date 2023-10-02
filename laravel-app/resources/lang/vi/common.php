@@ -13,6 +13,7 @@ return [
         "climate" => "Khí hậu",
         "reports" => "Báo cáo",
         "settings" => "Cặt đặt",
+        "administration" => "Administration",
 
         "animals" => "Vụ nuôi",
         "animal_types" => "Loại vật nuôi",
@@ -33,25 +34,39 @@ return [
         "standard_reports" => "Báo cáo chuẩn",
         "custom_reports" => "Báo cáo tùy chỉnh",
         "equipment" => "Thiết bị",
-        "warehouses" => "Kho hàng",
-        "inventory" => "Sản phẩm",
-        "inventory_types" => "Danh mục sản phẩm",
-        'contact' => 'Khách hàng',
-        'image_param' => 'Thông số hình ảnh',
-        'report_param' => 'Thông số báo cáo',
-        'upload_param' => 'Thông số upload',
+        "warehouses" => "Kho",
+        "inventory" => "Hàng tồn kho",
+        "inventory_types" => "Loại hàng tồn kho",
+        "contact" => "Khách hàng",
+        "image_param" => "Thông số hình ảnh",
+        "report_param" => "Thông số báo cáo",
+        "upload_param" => "Thông số upload",
+        "teams" => "Công ty",
+        "roles" => "Vai trò",
+        "users" => "Người dùng",
 
-        'treatments' => "Kế hoạch điều trị",
-        'feedings' => "Kế hoạch cho ăn",
-        'inputs' => "Bổ sung thêm",
-        'measurements' => "Đo lường",
-
-        'inventory_items' => 'Hàng tồn kho',
+        "treatments" => "Chữa trị",
+        "feedings" => "Cho ăn",
+        "inputs" => "Đầu vào",
+        "measurements" => "Đo lường",
+        "bin" => "thùng chứa",
+        "inventory_items" => "Hàng tồn kho",
 
         "currency_symbol" => "₫",
         "kg" => "kg",
         "keywords" => "Từ khóa",
         "description" => "Mô tả",
-        "status" => "Trạng thái"
+        "status" => "Trạng thái",
+        "from" => "từ",
+        "max" => "Tối đa",
+        "created_by" => "Tạo bởi",
+        "created_from" => "Từ ngày",
+        "created_until" => "Đến ngày",
+        "done" => "Xong",
+
+    ],
+    "message" => [
+        "delete_notify" => "Bạn có chắc chắn xóa bản ghi này?",
+
     ]
 ];

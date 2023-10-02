@@ -12,7 +12,7 @@ return [
     "kiloliter" => "kilô lít",
     "liter" => "lít",
     "milliliter" => "mili lít",
-    "quantity" => "số lượng",
+    "quantity" => "cái",
     "tonnes" => "tấn",
 
     // Purchased options
@@ -51,5 +51,36 @@ return [
     'done' => 'Xong',
     'incomplete' => 'Chưa hoàn thành',
     'missed' => 'Bỏ lỡ',
-    'skipped' => 'Bỏ qua'
+    'skipped' => 'Bỏ qua',
+
+    'alternative_therapy' => 'Liệu pháp thay thế',
+    'artificial_insemination' => 'Thụ tinh nhân tạo',
+    'branding' => 'Xây dựng thương hiệu',
+    'castration' => 'Thiến',
+    'dehorning' => 'Khử sừng',
+    'dental_procedure' => 'Thủ tục nha khoa',
+    'deworming' => 'Tẩy giun',
+    'ear_notching' => 'Vết khía tai',
+    'euthanasia' => 'cái chết êm ái',
+    'fly_treatment' => 'Điều trị ruồi',
+    'grooming' => 'Chải chuốt',
+    'hoof_trim' => 'Cắt móng',
+    'medication' => 'Thuốc',
+    'mites' => 'Con mạt',
+    'parasite_treatment' => 'Điều trị ký sinh trùng',
+    'surgical_procedure' => 'Quy trình phẫu thuật',
+    'tagging' => 'Gắn thẻ',
+    'tattoo' => 'Xăm hình',
+    'vaccination' => 'Tiêm chủng',
+    'other_procedure' => 'Quy trình khác',
+
+    // mode options
+    'intramuscular' => 'Tiêm bắp (trong cơ)',
+    'intramammary' => 'Vú (trong bầu vú)',
+    'intrauterine' => 'Trong tử cung (trong tử cung)',
+    'intravenous' => 'Tiêm tĩnh mạch (trong tĩnh mạch)',
+    'oral' => 'Miệng (trong miệng)',
+    'subcutaneous' => 'Dưới da (dưới da)',
+    'topical' => 'Bôi (trên da)',
+    'other' => 'Khác',
 ];

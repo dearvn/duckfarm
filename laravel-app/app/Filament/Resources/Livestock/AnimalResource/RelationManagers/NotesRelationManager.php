@@ -50,7 +50,7 @@ class NotesRelationManager extends RelationManager
 
                     Forms\Components\Group::make()
                     ->schema([
-                        Forms\Components\DatePicker::make('due_date')
+                        Forms\Components\DatePicker::make('date')
                             ->label(trans('animal-notes.resource.date'))
                             ->default(now()),
 
@@ -91,8 +91,13 @@ class NotesRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('id')
             ->columns([
-                Tables\Columns\TextColumn::make('date')->date('d/m/Y'),
-                Tables\Columns\TextColumn::make('description'),
+                Tables\Columns\TextColumn::make('date')
+                ->date('d/m/Y')
+                ->label(trans('animal-note.resource.date'))
+                ->searchable()
+                ->sortable(),
+                Tables\Columns\TextColumn::make('description')
+                ->label(trans('common.resource.description')),
             ])
             ->filters([
                 //

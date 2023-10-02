@@ -2,11 +2,12 @@
 
 namespace App\Models\Tool;
 
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Warehouse extends Model
+class Warehouse extends BaseModel
 {
     use HasFactory;
 

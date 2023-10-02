@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
-class Task extends Model implements HasMedia
+class Task extends BaseModel implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
 

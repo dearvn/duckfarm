@@ -13,8 +13,11 @@ return [
         "climate" => "Climate",
         "reports" => "Reports",
         "settings" => "Settings",
-        
+        "administration" => "Administration",
+
+
         "animal" => "Animal",
+        "animals" => "Animals",
         "animal_types" => "Animal Types",
         "livestock_groups" => "Livestock Groups",      
         "crops" => "Crops",
@@ -36,23 +39,37 @@ return [
         "warehouses" => "Warehouses",
         "inventory" => "Inventory",
         "inventory_types" => "Inventory Types",
-
-        'contact' => 'Contact',
-        'image_param' => 'Image Params',
-        'report_param' => 'Report Params',
-        'upload_param' => 'Upload Param',
+        "teams" => "Teams",
+        "roles" => "Roles",
+        "users" => "Users",
         
-        'treatments' => "Treatments",
-        'feedings' => "Feedings",
-        'inputs' => "Inputs",
-        'measurements' => "Measurement",
-
-        'inventory_items' => 'Inventory Items',
+        "contact" => "Contact",
+        "image_param" => "Image Params",
+        "report_param" => "Report Params",
+        "upload_param" => "Upload Param",
+        
+        "treatments" => "Treatments",
+        "feedings" => "Feedings",
+        "inputs" => "Inputs",
+        "measurements" => "Measurement",
+        "bin" => 'bin',
+        "inventory_items" => "Inventory Items",
 
         "currency_symbol" => "$",
         "kg" => "kg",
         "keywords" => "Keywords",
         "description" => "Description",
-        "status" => "Status"
+        "status" => "Status",
+        "from" => "from",
+        "max" => "Max",
+        "created_by" => "Created by",
+        "created_from" => "Created From",
+        "created_until" => "Created Until",
+        "done" => "Done",
+
+    ],
+    "message" => [
+        "delete_notify" => "Are you sure to delete this record?",
+
     ]
 ];

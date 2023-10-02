@@ -53,5 +53,37 @@ return [
     'done' => 'Done',
     'incomplete' => 'Incomplete',
     'missed' => 'Missed',
-    'skipped' => 'Skipped'
+    'skipped' => 'Skipped',
+
+    // treatment type options
+    'alternative_therapy' => 'Alternative Therapy',
+    'artificial_insemination' => 'Artificial Insemination',
+    'branding' => 'Branding',
+    'castration' => 'Castration',
+    'dehorning' => 'Dehorning',
+    'dental_procedure' => 'Dental Procedure',
+    'deworming' => 'Deworming',
+    'ear_notching' => 'Ear Notching',
+    'euthanasia' => 'Euthanasia',
+    'fly_treatment' => 'Fly Treatment',
+    'grooming' => 'Grooming',
+    'hoof_trim' => 'Hoof Trim',
+    'medication' => 'Medication',
+    'mites' => 'Mites',
+    'parasite_treatment' => 'Parasite Treatment',
+    'surgical_procedure' => 'Surgical Procedure',
+    'tagging' => 'Tagging',
+    'tattoo' => 'Tattoo',
+    'vaccination' => 'Vaccination',
+    'other_procedure' => 'Other Procedure',
+
+    // mode options
+    'intramuscular' => 'Intramuscular (in the muscle)',
+    'intramammary' => 'Intramammary (in the udder)',
+    'intrauterine' => 'Intrauterine (in the uterus)',
+    'intravenous' => 'Intravenous (in the vein)',
+    'oral' => 'Oral (in the mouth)',
+    'subcutaneous' => 'Subcutaneous (under the skin)',
+    'topical' => 'Topical (on the skin)',
+    'other' => 'Other',
 ];

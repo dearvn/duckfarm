@@ -2,6 +2,7 @@
 
 namespace App\Models\Livestock;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -42,11 +43,17 @@ class AnimalTreatment extends Model
     protected $casts = [
         "record_transaction" => "boolean",
         "retreat_date" => "date",
-        "date" => "date"
+        "date" => "date",
+        "keywords" => "array"
     ];
 
     public function animal(): BelongsTo
     {
         return $this->belongsTo(Animal::class);
+    }
+
+    public function created_by(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }

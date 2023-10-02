@@ -49,6 +49,10 @@ class AppServiceProvider extends ServiceProvider
                     ->label(trans('common.resource.settings'))
                     ->icon('heroicon-o-cog-8-tooth')
                     ->collapsed(),
+                NavigationGroup::make()
+                    ->label(trans('common.resource.administration'))
+                    ->icon('heroicon-o-cog-8-tooth')
+                    ->collapsed(),
             ]);
         });
 
