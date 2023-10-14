@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Shield;
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 use BezhanSalleh\FilamentShield\Facades\FilamentShield;
 use App\Filament\Resources\Shield\RoleResource\Pages;
+use App\Models\Role;
 use BezhanSalleh\FilamentShield\Support\Utils;
 use Filament\Forms;
 use Filament\Forms\Components\Actions\Action as FormAction;
@@ -21,6 +22,8 @@ use Illuminate\Support\Str;
 class RoleResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $recordTitleAttribute = 'name';
+
+    //protected static ?string $tenantOwnershipRelationshipName = 'role';
 
     protected static $permissionsCollection;
 
@@ -291,7 +294,7 @@ class RoleResource extends Resource implements HasShieldPermissions
 
     public static function getModel(): string
     {
-        return Utils::getRoleModel();
+        return Role::class;
     }
 
     public static function shouldRegisterNavigation(): bool

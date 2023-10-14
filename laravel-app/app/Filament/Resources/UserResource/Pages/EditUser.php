@@ -3,9 +3,9 @@
 namespace App\Filament\Resources\UserResource\Pages;
 
 use Filament\Resources\Pages\EditRecord;
-use SolutionForest\FilamentAccessManagement\Facades\FilamentAuthenticate;
+use App\Facades\FilamentAuthenticate;
 use App\Filament\Resources\UserResource;
-use SolutionForest\FilamentAccessManagement\Support\Utils;
+use App\Support\Utils;
 
 class EditUser extends EditRecord
 {
@@ -20,12 +20,12 @@ class EditUser extends EditRecord
         return $data;
     }
 
-    public function afterSave(): void
+    /*public function afterSave(): void
     {
         if (! is_a($this->record, Utils::getUserModel())) {
             return;
         }
 
         FilamentAuthenticate::clearPermissionCache();
-    }
+    }*/
 }

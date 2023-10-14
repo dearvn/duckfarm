@@ -21,6 +21,8 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use App\Filament\Pages\Auth\Login;
+use JibayMcs\FilamentTour\FilamentTourPlugin;
 
 class AppPanelProvider extends PanelProvider
 {
@@ -29,12 +31,15 @@ class AppPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('app')
+            ->login(Login::class)
             //->spa()
             //->globalSearch(true)
             ->path('app')
+            
             ->tenant(Team::class)
+            //->tenantRoutePrefix('team')
             ->tenantProfile(EditTeamProfile::class)
-            ->login()
+            //->login()
             ->profile(EditProfile::class)
             ->colors([
                 'primary' => Color::Amber,
@@ -48,6 +53,10 @@ class AppPanelProvider extends PanelProvider
             ->widgets([
                 //Widgets\AccountWidget::class,
                 //Widgets\FilamentInfoWidget::class,
+            ])
+            ->plugins([
+                FilamentTourPlugin::make(),
+                \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make()
             ])
             ->databaseNotifications()
             ->databaseNotificationsPolling('30s')

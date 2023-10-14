@@ -71,11 +71,16 @@ class UserResource extends Resource
                             ->maxLength(255)
                             ->label(trans('user.resource.confirm_password')),
 
-                         Forms\Components\Select::make('roles')
+                        Forms\Components\Select::make('roles')
                              ->multiple()
                              ->relationship('roles', 'name')
                              ->preload()
                              ->label(trans('user.resource.roles')),
+                        Forms\Components\Select::make('team_id')
+                             ->relationship('teams', 'name')
+                             ->preload()
+                             ->label(trans('team.resource.team')),
+                        
                     ])->columns(2),
             ]);
     }
@@ -115,7 +120,7 @@ class UserResource extends Resource
 
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime('d/m/Y H:i:s')
-                    ->label(trans('user.resource.created_at')),
+                    ->label(trans('common.resource.created_at')),
             ])
             ->filters([
                 //

@@ -1,13 +1,13 @@
 <?php
 
-namespace SolutionForest\FilamentAccessManagement\Resources\UserResource\RelationManagers;
+namespace App\Filament\Resources\UserResource\RelationManagers;
 
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables\Table;
 use Filament\Tables;
-use SolutionForest\FilamentAccessManagement\Facades\FilamentAuthenticate;
+use App\Filament\Facades\FilamentAuthenticate;
 
 class RolesRelationManager extends RelationManager
 {

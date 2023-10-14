@@ -3,22 +3,22 @@
 return [
     "resource" => [
         "id" => "ID",
-        "single" => "User",
-        "email_verified_at" => "Email Verified",
-        "created_at" => "Created At",
-        "updated_at" => "Updated At",
-        "verified" => "Verified",
-        "unverified" => "Unverified",
-        "name" => "Name",
+        "single" => "Người dùng",
+        "verified_at" => "Đã xác minh lúc",
+        "verified" => "Đã xác minh",
+        "unverified" => "Chưa xã minh",
+        "name" => "Tên",
         "email" => "Email",
-        "password" => "Password",
-        "roles" => "Roles",
-        "label" => "Users",
+        "password" => "Mật khẩu",
+        "confirm_password" => "Nhập lại mật khẩu",
+        "roles" => "Vai trò",
+        "label" => "Người dùng",
         "title" => [
-            "create" => "Create User",
-            "edit" => "Edit User",
-            "list" => "Users",
-            "home" => "Users"
+            "create" => "Tạo người dùng",
+            "edit" => "Sửa người dùng",
+            "list" => "Danh sách người dùng",
+            "home" => "Người dùng"
         ],
     ]
+    
 ];

@@ -10,10 +10,12 @@ use App\Models\Tool\Equipment;
 use App\Models\Tool\Inventory;
 use App\Models\Tool\InventoryType;
 use App\Models\Tool\Warehouse;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Spatie\Permission\Models\Role;
 
 class Team extends Model
 {
@@ -101,4 +103,15 @@ class Team extends Model
     {
         return $this->hasOne(AnimalType::class);
     }
+
+    public function users(): HasOne
+    {
+        return $this->hasOne(User::class);
+    }
+
+    public function roles(): HasOne
+    {
+        return $this->hasOne(Role::class);
+    }
+
 }
